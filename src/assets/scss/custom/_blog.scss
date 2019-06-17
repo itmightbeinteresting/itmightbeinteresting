@@ -1,0 +1,44 @@
+.blog-list ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.blog-list ul li {
+  margin-bottom: 40px;
+}
+
+.blog-list-image {
+  width: 100%;
+}
+
+.blog-list-image img {
+  width: 100%;
+}
+
+.blog-card {
+  display: flex;
+}
+
+.blog-list-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag-section {
+  display: flex;
+  ul {
+    display: inherit;
+    li {
+      margin-bottom: 0px;
+      span {
+        background-color: rgba(52, 98, 175, 0.8);
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+
+.blog-description {
+  font-size: 1.15rem;
+}
