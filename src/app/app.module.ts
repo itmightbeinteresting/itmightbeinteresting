@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
+import { PostComponent } from './post/post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -21,6 +22,7 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     SignupComponent,
     LandingComponent,
+    PostComponent,
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
