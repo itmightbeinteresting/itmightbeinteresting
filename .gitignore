@@ -1,6 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-/src/app/services/butterCMS.service.ts
+# /src/app/services/butterCMS.service.ts
 
 # compiled output
 /dist
