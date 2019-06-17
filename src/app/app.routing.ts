@@ -12,27 +12,28 @@ import { CategoriesComponent } from './categories/categories.component';
 import { PostsByCategoryComponent } from './categories/posts-category.component';
 import { LoginComponent } from './login/login.component';
 import { TagsComponent } from './tags/tags.component';
+import { PostsByTagComponent } from './tags/posts-tag.component';
 
 const routes: Routes = [
+  // {
+  //   path: 'user-profile',
+  //   component: ProfileComponent
+  // },
+  // {
+  //   path: 'register',
+  //   component: SignupComponent
+  // },
+  // {
+  //   path: 'login',
+  //   component: LoginComponent
+  // },
   {
-    path: 'home',
+    path: '',
     component: HomeComponent
   },
   {
-    path: 'user-profile',
-    component: ProfileComponent
-  },
-  {
-    path: 'register',
-    component: SignupComponent
-  },
-  {
-    path: 'landing',
-    component: LandingComponent
-  },
-  {
-    path: '',
-    component: LandingComponent
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'categories',
@@ -43,16 +44,16 @@ const routes: Routes = [
     component: TagsComponent
   },
   {
-    path: 'categories/:slug',
+    path: 'category/:slug',
     component: PostsByCategoryComponent
+  },
+  {
+    path: 'tag/:slug',
+    component: PostsByTagComponent
   },
   {
     path: ':slug',
     component: PostComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
   }
 ];
 

@@ -106,3 +106,19 @@ pre.code-toolbar > .toolbar a {
 .sponsor img {
   height: 60px;
 }
+
+.post-tag-section {
+  display: flex;
+  justify-content: center;
+}
+
+.post-tag-list {
+  list-style-type: none;
+  padding-left: 0px;
+  margin-top: .5rem;
+  li {
+    span {
+      font-size: 16px;
+    }
+  }
+}

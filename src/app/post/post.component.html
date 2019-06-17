@@ -16,8 +16,7 @@
         <div class="col px-0">
           <div class="row text-center justify-content-center">
             <div class="col-lg-12">
-              <h1 class="display-3 text-white">{{ post.data?.title }}</h1>
-              <!-- <h4 class="text-white">By {{ post.data?.author.first_name }} {{ post.data?.author.last_name }}</h4> -->
+              <h1 *ngIf="!loading" class="display-3 text-white">{{ post.data?.title }}</h1>
             </div>
           </div>
         </div>
@@ -31,11 +30,24 @@
   </div>
   <section class="section section-lg-0 pt-lg-0 mt--200">
     <div class="post-img">
-      <img src="{{ post.data?.featured_image }}" />
+      <img *ngIf="!loading" src="{{ post.data?.featured_image }}" />
     </div>
     <div class="container">
       <div class="row justify-content-center post-content">
-        <div class="col-lg-12" [innerHTML]="post.data?.body"></div>
+        <div *ngIf="!loading" class="col-lg-12 text-center">
+          <h4>By {{ post.data?.author.first_name }} {{ post.data?.author.last_name }}</h4>
+          <h5>{{ post.data?.published | date }}</h5>
+        </div>
+        <div *ngIf="!loading" class="col-lg-12 text-center tag-section post-tag-section">
+          <ul class="tag-list post-tag-list">
+            <li *ngFor="let tag of post.data?.tags">
+              <span class="badge badge-pill badge-default card-click" (click)="selectTag(tag)">{{ tag.name }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row justify-content-center post-content">
+        <div *ngIf="!loading" class="col-lg-12" [innerHTML]="post.data?.body"></div>
       </div>
     </div>
   </section>

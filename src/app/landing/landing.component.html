@@ -33,7 +33,7 @@
   <section class="section section-lg-0 pt-lg-0 mt--200">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-12 blog-list">
+        <div *ngIf="!loading" class="col-lg-12 blog-list">
           <ul>
             <li *ngFor="let post of posts">
               <div class="row row-grid">
@@ -55,7 +55,7 @@
                         <div class="tag-section">
                           <ul class="tag-list">
                             <li *ngFor="let tag of post.tags">
-                              <span class="badge badge-pill badge-default">{{ tag.name }}</span>
+                              <span class="badge badge-pill badge-default card-click" (click)="selectTag(tag)">{{ tag.name }}</span>
                             </li>
                           </ul>
                         </div>

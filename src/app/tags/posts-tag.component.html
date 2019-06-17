@@ -17,7 +17,7 @@
           <div class="row text-center justify-content-center">
             <div class="col-lg-12">
               <h1 class="display-3 text-white">Coding Roadmap
-                <span>Articles</span>
+                <span>{{ tag }}</span>
               </h1>
             </div>
           </div>
@@ -33,7 +33,7 @@
   <section class="section section-lg-0 pt-lg-0 mt--200">
     <div class="container">
       <div class="row justify-content-center">
-        <div *ngIf="!loading" class="col-lg-12 blog-list">
+        <div class="col-lg-12 blog-list">
           <ul>
             <li *ngFor="let post of posts">
               <div class="row row-grid">
@@ -42,24 +42,24 @@
                     <div class="card-body blog-card py-5">
                       <div class="col-lg-3 blog-image-block">
                         <div class="blog-list-image">
-                          <a routerLink="{{ post.slug }}">
+                          <a routerLink="/{{ post.slug }}">
                             <img src="{{ post.featured_image }}" />
                           </a>
                         </div>
                       </div>
                       <div class="blog-list-content col-lg-9">
-                        <a routerLink="{{ post.slug }}">
+                        <a routerLink="/{{ post.slug }}">
                           <h5 class="text-default blog-title text-uppercase">{{ post.title }}</h5>
                         </a>
-                        <h6>{{ post.published | date }}</h6>
                         <p class="blog-description mt-3">{{ post.summary }}</p>
                         <div class="tag-section">
                           <ul class="tag-list">
                             <li *ngFor="let tag of post.tags">
-                              <span class="badge badge-pill badge-default card-click" (click)="selectTag(tag)">{{ tag.name }}</span>
+                              <span class="badge badge-pill badge-default">{{ tag.name }}</span>
                             </li>
                           </ul>
                         </div>
+                        <a routerLink="/{{ post.slug }}" class="btn btn-default mt-4">Read more</a>
                       </div>
                     </div>
                   </div>
@@ -72,4 +72,3 @@
     </div>
   </section>
 </main>
-  

@@ -8,13 +8,16 @@
 
         .card-profile-image {
             position: relative;
+
             //min-height: 130px;
 
             img {
                 max-width: 180px;
                 border-radius: $border-radius;
+
                 @extend .shadow;
-                transform: translate(-50%,-30%);
+
+                transform: translate(-50%, -30%);
                 position: absolute;
                 left: 50%;
                 transition: $transition-base;
@@ -42,6 +45,7 @@
                     font-weight: bold;
                     display: block;
                 }
+
                 .description {
                     font-size: 1.15rem;
                     color: $gray-500;
@@ -56,8 +60,9 @@
         @include media-breakpoint-down(xs) {
             .card-profile-actions {
                 margin-top: 110px;
-            } 
+            }
         }
+
 
         @include media-breakpoint-between(sm, md) {
             .card-profile-stats {
@@ -85,11 +90,13 @@
     }
 }
 
-// Animated cards
-
 .card-lift--hover {
-    &:hover {
-        transform: translateY(-20px);
-        @include transition($transition-base);
-    }
+  &:hover {
+    transform: translateY(-20px);
+    @include transition($transition-base);
+  }
+}
+
+.card-click:hover {
+  cursor: pointer;
 }

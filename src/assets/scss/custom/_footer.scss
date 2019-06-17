@@ -35,7 +35,13 @@
     }
 
     .copyright {
+        display: flex;
+        align-items: center;
         font-size: $font-size-sm;
+        p {
+            margin-bottom: 0px;
+            margin-left: 4px;
+        }
     }
 }
 

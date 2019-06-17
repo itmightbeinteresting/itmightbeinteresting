@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { butterService } from '../services/butterCMS.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-categories',
@@ -9,8 +10,11 @@ import { butterService } from '../services/butterCMS.service';
 export class CategoriesComponent implements OnInit {
   categories: any;
   category: any;
+  loading: boolean = true;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.getCategories();
@@ -28,6 +32,7 @@ export class CategoriesComponent implements OnInit {
     this.category = category.slug;
     localStorage.setItem('category', this.category);
     console.log(localStorage);
+    this.router.navigate(['/category/', this.category]);
   }
 
 }

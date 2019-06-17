@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewChecked } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { butterService } from '../services/butterCMS.service';
 import { map, take } from 'rxjs/operators';
 import { HighlightService } from '../services/highlight.service';
@@ -17,9 +17,12 @@ import { HighlightService } from '../services/highlight.service';
 export class PostComponent implements OnInit, AfterViewChecked {
   posts: any;
   highlighted: boolean = false;
+  loading: boolean = true;
+  tag: any;
 
   constructor(
     protected route: ActivatedRoute,
+    private router: Router,
     private highlightService: HighlightService
   ) {}
 
@@ -29,27 +32,36 @@ export class PostComponent implements OnInit, AfterViewChecked {
     data: null
   };
 
-  ngAfterViewChecked() {
+  async ngAfterViewChecked() {
     this.highlightService.highlightAll();
     this.highlighted = true;
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.slug$ = this.route.paramMap
       .pipe(
         map(params => (params.get('slug')))
       );
     this.slug$.pipe(
       take(1))
-      .subscribe(slug => {
+      .toPromise()
+      .then(slug => {
         butterService.post.retrieve(slug)
           .then((res) => {
             this.post = res.data;
             console.log(this.post);
+            this.loading = false;
           })
           .catch((res) => {
             console.log(res);
           });
       });
+  }
+
+  selectTag(tag) {
+    this.tag = tag.slug;
+    localStorage.setItem('tag', this.tag);
+    console.log(localStorage);
+    this.router.navigate(['/tag/', this.tag]);
   }
 }
