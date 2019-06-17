@@ -51,7 +51,7 @@
                         <a routerLink="{{ post.slug }}">
                           <h5 class="text-default blog-title text-uppercase">{{ post.title }}</h5>
                         </a>
-                        <p class="blog-description mt-3">Argon is a great free UI package based on Angular that includes the most important components and features.</p>
+                        <p class="blog-description mt-3">{{ post.summary }}</p>
                         <div class="tag-section">
                           <ul class="tag-list">
                             <li *ngFor="let tag of post.tags">
