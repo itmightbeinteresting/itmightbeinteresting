@@ -1,20 +1,26 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewChecked } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { butterService } from '../services/butterCMS.service';
 import { map, take } from 'rxjs/operators';
+import { HighlightService } from '../services/highlight.service';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
+  providers: [
+    HighlightService
+  ],
   encapsulation: ViewEncapsulation.None
 })
 
-export class PostComponent implements OnInit {
+export class PostComponent implements OnInit, AfterViewChecked {
   posts: any;
+  highlighted: boolean = false;
 
   constructor(
-    protected route: ActivatedRoute
+    protected route: ActivatedRoute,
+    private highlightService: HighlightService
   ) {}
 
   protected slug$: Observable<string>;
@@ -22,6 +28,11 @@ export class PostComponent implements OnInit {
     meta: null,
     data: null
   };
+
+  ngAfterViewChecked() {
+    this.highlightService.highlightAll();
+    this.highlighted = true;
+  }
 
   ngOnInit() {
     this.slug$ = this.route.paramMap

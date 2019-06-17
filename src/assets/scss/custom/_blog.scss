@@ -55,3 +55,40 @@
   display: flex;
   justify-content: center;
 }
+
+.post-content {
+  margin-top: 60px;
+}
+
+.post-content p {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.post-content ol li {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+}
+
+.post-content ul li {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+}
+
+.post-content p img {
+  width: 100% !important;
+}
+
+pre.code-toolbar > .toolbar {
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+pre.code-toolbar > .toolbar a {
+  padding-top: 0.45rem;
+  padding-bottom: 0.4rem;
+  padding-left: 0.9rem;
+  padding-right: 0.9rem;
+  font-size: 0.9rem;
+  color: #FFFFFF;
+}
