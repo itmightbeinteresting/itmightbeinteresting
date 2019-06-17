@@ -92,3 +92,17 @@ pre.code-toolbar > .toolbar a {
   font-size: 0.9rem;
   color: #FFFFFF;
 }
+
+.sponsor {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sponsor p {
+  margin-bottom: 0px;
+  color: #000000;
+}
+
+.sponsor img {
+  height: 60px;
+}
