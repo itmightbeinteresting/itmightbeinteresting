@@ -8,8 +8,6 @@ import { butterService } from '../services/butterCMS.service';
 })
 
 export class LandingComponent implements OnInit {
-  // focus: any;
-  // focus1: any;
   posts: any;
 
   constructor() { }

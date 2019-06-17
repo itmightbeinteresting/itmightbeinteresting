@@ -8,7 +8,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { PostComponent } from './post/post.component';
+import { CategoriesComponent } from './categories/categories.component';
 import { LoginComponent } from './login/login.component';
+import { TagsComponent } from './tags/tags.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,14 @@ const routes: Routes = [
   {
     path: '',
     component: LandingComponent
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent
+  },
+  {
+    path: 'tags',
+    component: TagsComponent
   },
   {
     path: ':slug',

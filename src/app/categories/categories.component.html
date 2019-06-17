@@ -1,0 +1,76 @@
+<main>
+  <div class="position-relative">
+    <section class="section section-lg section-shaped pb-200 bg-gradient-default">
+      <div class="shape shape-style-1 shape-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container py-lg-md d-flex">
+        <div class="col px-0">
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-12">
+              <h1 class="display-3 text-white">Categories
+                <!-- <span>completed with examples</span> -->
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+  </div>
+  <section class="section section-lg-0 pt-lg-0 mt--200">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 blog-list">
+          <ul>
+            <li *ngFor="let category of categories">
+              <div class="row row-grid">
+                <div class="col-lg-12">
+                  <div class="card card-lift--hover shadow border-0">
+                    <div class="card-body blog-card py-5">
+                      <!-- <div class="col-lg-3 blog-image-block">
+                        <div class="blog-list-image">
+                          <a routerLink="{{ post.slug }}">
+                            <img src="{{ post.featured_image }}" />
+                          </a>
+                        </div>
+                      </div> -->
+                      <div class="blog-list-content col-lg-9">
+                        <!-- <a routerLink="{{ post.slug }}">
+                          <h5 class="text-default blog-title text-uppercase">{{ post.title }}</h5>
+                        </a> -->
+                        <h5>{{ category.name }}</h5>
+                        <!-- <p class="blog-description mt-3">Argon is a great free UI package based on Angular that includes the most important components and features.</p>
+                        <div class="tag-section">
+                          <ul class="tag-list">
+                            <li *ngFor="let tag of post.tags">
+                              <span class="badge badge-pill badge-default">{{ tag.name }}</span>
+                            </li>
+                          </ul>
+                        </div> -->
+                        <!-- <a routerLink="{{ post.slug }}" class="btn btn-default mt-4">Read more</a> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+  

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { PostComponent } from './post/post.component';
+import { CategoriesComponent } from './categories/categories.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -17,6 +18,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
 import { HighlightService } from './services/highlight.service';
+import { TagsComponent } from './tags/tags.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { HighlightService } from './services/highlight.service';
     SignupComponent,
     LandingComponent,
     PostComponent,
+    CategoriesComponent,
+    TagsComponent,
     ProfileComponent,
     NavbarComponent,
     FooterComponent,

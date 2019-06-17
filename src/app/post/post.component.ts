@@ -47,9 +47,6 @@ export class PostComponent implements OnInit, AfterViewChecked {
             this.post = res.data;
             console.log(this.post);
           })
-          .then(() => {
-            console.log(this.post.data.author.first_name);
-          })
           .catch((res) => {
             console.log(res);
           });
