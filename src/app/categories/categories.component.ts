@@ -8,6 +8,7 @@ import { butterService } from '../services/butterCMS.service';
 
 export class CategoriesComponent implements OnInit {
   categories: any;
+  category: any;
 
   constructor() { }
 
@@ -21,6 +22,12 @@ export class CategoriesComponent implements OnInit {
         console.log(res.data.data);
         this.categories = res.data.data;
       });
+  }
+
+  selectCategory(category) {
+    this.category = category.slug;
+    localStorage.setItem('category', this.category);
+    console.log(localStorage);
   }
 
 }

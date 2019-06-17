@@ -9,6 +9,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { PostComponent } from './post/post.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { PostsByCategoryComponent } from './categories/posts-category.component';
 import { LoginComponent } from './login/login.component';
 import { TagsComponent } from './tags/tags.component';
 
@@ -42,6 +43,10 @@ const routes: Routes = [
     component: TagsComponent
   },
   {
+    path: 'categories/:slug',
+    component: PostsByCategoryComponent
+  },
+  {
     path: ':slug',
     component: PostComponent
   },
@@ -49,11 +54,6 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   }
-  // {
-  //   path: '',
-  //   redirectTo: 'landing',
-  //   pathMatch: 'full'
-  // }
 ];
 
 @NgModule({
