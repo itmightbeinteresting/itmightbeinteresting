@@ -91,12 +91,17 @@
 }
 
 .card-lift--hover {
-  &:hover {
-    transform: translateY(-20px);
-    @include transition($transition-base);
-  }
+    &:hover {
+        transform: translateY(-15px);
+
+        @include transition($transition-base);
+    }
 }
 
 .card-click:hover {
-  cursor: pointer;
+    cursor: pointer;
+}
+
+.main-tags ul li span {
+  font-size: 12px;
 }

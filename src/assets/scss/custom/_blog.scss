@@ -49,11 +49,15 @@
 
 .blog-description {
   font-size: 1.15rem;
+  font-weight: 500;
 }
 
 .post-img {
   display: flex;
   justify-content: center;
+  img {
+    width: 650px !important;
+  }
 }
 
 .post-content {

@@ -53,7 +53,7 @@
                         </a>
                         <h6>{{ post.published | date }}</h6>
                         <p class="blog-description mt-3">{{ post.summary }}</p>
-                        <div class="tag-section">
+                        <div class="tag-section main-tags">
                           <ul class="tag-list">
                             <li *ngFor="let tag of post.tags">
                               <span class="badge badge-pill badge-default card-click" (click)="selectTag(tag)">{{ tag.name }}</span>
