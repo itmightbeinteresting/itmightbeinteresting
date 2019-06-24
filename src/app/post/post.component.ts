@@ -8,6 +8,7 @@ import { HighlightService } from '../services/highlight.service';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
+  styleUrls: ['../app.component.scss'],
   providers: [
     HighlightService
   ],
@@ -19,6 +20,11 @@ export class PostComponent implements OnInit, AfterViewChecked {
   highlighted: boolean = false;
   loading: boolean = true;
   tag: any;
+  step1: boolean;
+  step2: boolean;
+  step3: boolean;
+  step4: boolean;
+  showData: boolean;
 
   constructor(
     protected route: ActivatedRoute,
@@ -32,12 +38,43 @@ export class PostComponent implements OnInit, AfterViewChecked {
     data: null
   };
 
-  async ngAfterViewChecked() {
+  ngAfterViewChecked() {
     this.highlightService.highlightAll();
     this.highlighted = true;
   }
 
-  async ngOnInit() {
+  ngOnInit() {
+    this.showData = false;
+    this.step1 = true;
+    this.progressLoaderOne();
+  }
+
+  progressLoaderOne() {
+    const stepOne = setTimeout(() => {
+      this.step1 = false;
+      this.step2 = true;
+      this.fetchPost();
+      return stepOne;
+    }, 750);
+  }
+
+  progressLoaderTwo() {
+    const stepTwo = setTimeout(() => {
+      this.step3 = false;
+      this.step4 = true;
+      this.progressLoaderThree();
+      return stepTwo;
+    }, 750);
+  }
+
+  progressLoaderThree() {
+    const stepThree = setTimeout(() => {
+      this.displayData();
+      return stepThree;
+    }, 250);
+  }
+
+  fetchPost() {
     this.slug$ = this.route.paramMap
       .pipe(
         map(params => (params.get('slug')))
@@ -49,13 +86,24 @@ export class PostComponent implements OnInit, AfterViewChecked {
         butterService.post.retrieve(slug)
           .then((res) => {
             this.post = res.data;
-            console.log(this.post);
-            this.loading = false;
+            this.step2 = false;
+            this.step3 = true;
+            this.progressLoaderTwo();
+            // console.log(this.post);
+            // this.loading = false;
           })
           .catch((res) => {
             console.log(res);
           });
       });
+  }
+
+  displayData() {
+    if (this.post) {
+      this.step4 = false;
+      this.loading = false;
+      this.showData = true;
+    }
   }
 
   selectTag(tag) {

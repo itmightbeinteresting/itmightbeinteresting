@@ -24,10 +24,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.showData = false;
-    // this.loading = true;
     this.step1 = true;
     this.progressLoaderOne();
-    // this.fetchPosts();
   }
 
   progressLoaderOne() {
