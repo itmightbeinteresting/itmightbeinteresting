@@ -74,7 +74,6 @@ export class CategoriesComponent implements OnInit {
   selectCategory(category) {
     this.category = category.slug;
     localStorage.setItem('category', this.category);
-    console.log(localStorage);
     this.router.navigate(['/category/', this.category]);
   }
 
