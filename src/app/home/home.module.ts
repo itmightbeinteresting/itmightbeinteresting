@@ -15,10 +15,11 @@ import { SectionsModule } from '../sections/sections.module';
         BrowserModule,
         FormsModule,
         RouterModule,
+        NgbModule,
         SectionsModule
     ],
     declarations: [ HomeComponent ],
-    exports:[ HomeComponent ],
+    exports: [ HomeComponent ],
     providers: []
 })
 export class HomeModule { }
