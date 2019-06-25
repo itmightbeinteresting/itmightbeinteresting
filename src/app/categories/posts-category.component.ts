@@ -82,5 +82,4 @@ export class PostsByCategoryComponent implements OnInit {
     localStorage.setItem('tag', this.tag);
     this.router.navigate(['/tag/', this.tag]);
   }
-
 }
