@@ -1,3 +1,3 @@
 import * as Butter from 'buttercms';
 
-export const butterService = Butter('9850fc104dc0353b9437eb965f090f8386f9f1ee');
+export const butterService = Butter('040698f28c6b236d5aacdcb9238764815284c3ea');
