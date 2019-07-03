@@ -13,6 +13,7 @@ import { PostsByCategoryComponent } from './categories/posts-category.component'
 import { LoginComponent } from './login/login.component';
 import { TagsComponent } from './tags/tags.component';
 import { PostsByTagComponent } from './tags/posts-tag.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   // {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'tags',
     component: TagsComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: 'category/:slug',

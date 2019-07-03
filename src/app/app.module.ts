@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { HighlightService } from './services/highlight.service';
 import { TagsComponent } from './tags/tags.component';
 import { PostsByTagComponent } from './tags/posts-tag.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { PostsByTagComponent } from './tags/posts-tag.component';
     PostsByCategoryComponent,
     PostsByTagComponent,
     TagsComponent,
+    AboutComponent,
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
