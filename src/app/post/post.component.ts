@@ -85,11 +85,12 @@ export class PostComponent implements OnInit, AfterViewChecked {
       .then(slug => {
         butterService.post.retrieve(slug)
           .then((res) => {
+            console.log(res);
             this.post = res.data;
             this.step2 = false;
             this.step3 = true;
             this.progressLoaderTwo();
-            // console.log(this.post);
+            console.log(this.post);
             // this.loading = false;
           })
           .catch((res) => {
