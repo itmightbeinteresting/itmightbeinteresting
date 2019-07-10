@@ -4,13 +4,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { butterService } from '../services/butterCMS.service';
 import { map, take } from 'rxjs/operators';
 import { HighlightService } from '../services/highlight.service';
+import { EpisodeService } from '../services/post.service';
+import { Episode } from '../models/episode';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['../app.component.scss'],
   providers: [
-    HighlightService
+    HighlightService,
+    EpisodeService
   ],
   encapsulation: ViewEncapsulation.None
 })
@@ -25,11 +28,15 @@ export class PostComponent implements OnInit, AfterViewChecked {
   step3: boolean;
   step4: boolean;
   showData: boolean;
+  episodes: Episode[];
+  episode: Episode;
+  postSlug: any;
 
   constructor(
     protected route: ActivatedRoute,
     private router: Router,
-    private highlightService: HighlightService
+    private highlightService: HighlightService,
+    private episodeService: EpisodeService
   ) {}
 
   protected slug$: Observable<string>;
@@ -85,18 +92,30 @@ export class PostComponent implements OnInit, AfterViewChecked {
       .then(slug => {
         butterService.post.retrieve(slug)
           .then((res) => {
-            console.log(res);
             this.post = res.data;
+            this.postSlug = this.post.data.slug;
             this.step2 = false;
             this.step3 = true;
             this.progressLoaderTwo();
-            console.log(this.post);
-            // this.loading = false;
           })
           .catch((res) => {
-            console.log(res);
+            return res;
           });
+      }).then(() => {
+        this.fetchDatabasePost();
       });
+  }
+
+  fetchDatabasePost() {
+    this.episodeService.fetchEpisodes().subscribe(data => {
+      this.episodes = data.episodes;
+      for (let i = 0; i < this.episodes.length; i++) {
+        if (this.episodes[i].slug === this.postSlug) {
+          this.episode = this.episodes[i];
+        }
+      }
+      return data;
+    });
   }
 
   displayData() {
@@ -110,7 +129,6 @@ export class PostComponent implements OnInit, AfterViewChecked {
   selectTag(tag) {
     this.tag = tag.slug;
     localStorage.setItem('tag', this.tag);
-    console.log(localStorage);
     this.router.navigate(['/tag/', this.tag]);
   }
 }
