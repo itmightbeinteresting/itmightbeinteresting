@@ -17,7 +17,7 @@
 }
 
 .post-inner {
-  margin-top: 75px;
+  margin-top: 25px;
 }
 
 .post-date {
@@ -39,4 +39,16 @@
 .tags-title {
   font-weight: 700;
   margin-bottom: 0px;
+}
+
+ul.post-social-links {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  padding-left: 0px;
+  justify-content: space-around;
+}
+
+ul.post-social-links li a i {
+  font-size: 42px;
 }

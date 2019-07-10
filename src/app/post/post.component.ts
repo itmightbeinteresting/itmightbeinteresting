@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewChecked } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 import { butterService } from '../services/butterCMS.service';
 import { map, take } from 'rxjs/operators';
 import { HighlightService } from '../services/highlight.service';
@@ -31,12 +32,14 @@ export class PostComponent implements OnInit, AfterViewChecked {
   episodes: Episode[];
   episode: Episode;
   postSlug: any;
+  iframeUrl: any;
 
   constructor(
     protected route: ActivatedRoute,
     private router: Router,
     private highlightService: HighlightService,
-    private episodeService: EpisodeService
+    private episodeService: EpisodeService,
+    private sanitizer: DomSanitizer
   ) {}
 
   protected slug$: Observable<string>;
@@ -112,10 +115,17 @@ export class PostComponent implements OnInit, AfterViewChecked {
       for (let i = 0; i < this.episodes.length; i++) {
         if (this.episodes[i].slug === this.postSlug) {
           this.episode = this.episodes[i];
+          this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.episode.embed_url);
         }
       }
-      return data;
+      console.log(this.episode.embed_url);
+      console.log(this.iframeUrl);
+      return this.episode;
     });
+  }
+
+  embedURL() {
+    return this.sanitizer.bypassSecurityTrustUrl(this.episode.embed_url);
   }
 
   displayData() {
