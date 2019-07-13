@@ -6,8 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../app.component.scss']
 })
 export class AddPostInfoComponent implements OnInit {
-  focus: any;
   focus1: any;
+  focus2: any;
+  focus3: any;
+  focus4: any;
+  focus5: any;
+  focus6: any;
+  focus7: any;
+  focus8: any;
 
   constructor() {}
 

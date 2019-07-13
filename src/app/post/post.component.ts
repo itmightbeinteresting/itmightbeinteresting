@@ -23,6 +23,7 @@ export class PostComponent implements OnInit, AfterViewChecked {
   posts: any;
   highlighted: boolean = false;
   loading: boolean = true;
+  postError: boolean;
   tag: any;
   step1: boolean;
   step2: boolean;
@@ -111,21 +112,34 @@ export class PostComponent implements OnInit, AfterViewChecked {
 
   fetchDatabasePost() {
     this.episodeService.fetchEpisodes().subscribe(data => {
-      this.episodes = data.episodes;
-      for (let i = 0; i < this.episodes.length; i++) {
-        if (this.episodes[i].slug === this.postSlug) {
-          this.episode = this.episodes[i];
-          this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.episode.embed_url);
+      if (!data) {
+        this.postError = true;
+        this.loading = false;
+      } else {
+        this.episodes = data.episodes;
+        for (let i = 0; i < this.episodes.length; i++) {
+          if (this.episodes[i].slug === this.postSlug) {
+            this.episode = this.episodes[i];
+            this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.episode.embed_url);
+          }
+        }
+        if (!this.episode) {
+          return;
+        } else {
+          console.log(this.episode.embed_url);
+          console.log(this.iframeUrl);
+          return this.episode;
         }
       }
-      console.log(this.episode.embed_url);
-      console.log(this.iframeUrl);
-      return this.episode;
     });
   }
 
   embedURL() {
-    return this.sanitizer.bypassSecurityTrustUrl(this.episode.embed_url);
+    if (!this.episode) {
+      return;
+    } else {
+      return this.sanitizer.bypassSecurityTrustUrl(this.episode.embed_url);
+    }
   }
 
   displayData() {

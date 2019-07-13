@@ -5,13 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
+import { AddPostInfoComponent } from './forms/post-info.component';
+import { LoginComponent } from './login/login.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { PostsByCategoryComponent } from './categories/posts-category.component';
-import { LoginComponent } from './login/login.component';
 import { TagsComponent } from './tags/tags.component';
 import { PostsByTagComponent } from './tags/posts-tag.component';
 import { AboutComponent } from './about/about.component';
-import { AddPostInfoComponent } from './forms/post-info.component';
 
 const routes: Routes = [
   {
@@ -21,6 +21,14 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'addpost',
+    component: AddPostInfoComponent
   },
   {
     path: 'categories',
@@ -45,14 +53,6 @@ const routes: Routes = [
   {
     path: ':slug',
     component: PostComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'addpost',
-    component: AddPostInfoComponent
   }
 ];
 
@@ -65,4 +65,5 @@ const routes: Routes = [
   exports: [
   ],
 })
+
 export class AppRoutingModule { }
