@@ -6,24 +6,15 @@
         <div class="copyright">
           &copy; {{today | date: 'yyyy'}}
           <p>It Might Be Interesting</p>
+          <ul class="nav nav-footer">
+            <li class="nav-item">
+              <a [routerLink]="['/login']" class="nav-link">Admin</a>
+            </li>
+          </ul>
         </div>
       </div>
       <div class="col-md-6 sponsor">
         <p>Content Managed With <a href="https://buttercms.com/" target="_blank"><img src="https://bad-movie-night.s3-us-west-2.amazonaws.com/codingroadmap/butter-b.png" alt="ButterCMS" /></a></p>
-        <!-- <ul class="nav nav-footer justify-content-end">
-          <li class="nav-item">
-            <a href="https://www.creative-tim.com?ref=adsa-footer" class="nav-link" target="_blank">Creative Tim</a>
-          </li>
-          <li class="nav-item">
-            <a href="https://www.creative-tim.com/presentation?ref=adsa-footer" class="nav-link" target="_blank">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a href="http://blog.creative-tim.com?ref=adsa-footer" class="nav-link" target="_blank">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/creativetimofficial/argon-design-system-angular/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-          </li>
-        </ul> -->
       </div>
     </div>
   </div>

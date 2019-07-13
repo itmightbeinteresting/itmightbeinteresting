@@ -4,9 +4,6 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
-import { SignupComponent } from './signup/signup.component';
-import { LandingComponent } from './landing/landing.component';
 import { PostComponent } from './post/post.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { PostsByCategoryComponent } from './categories/posts-category.component';
@@ -14,20 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { TagsComponent } from './tags/tags.component';
 import { PostsByTagComponent } from './tags/posts-tag.component';
 import { AboutComponent } from './about/about.component';
+import { AddPostInfoComponent } from './forms/post-info.component';
 
 const routes: Routes = [
-  // {
-  //   path: 'user-profile',
-  //   component: ProfileComponent
-  // },
-  // {
-  //   path: 'register',
-  //   component: SignupComponent
-  // },
-  // {
-  //   path: 'login',
-  //   component: LoginComponent
-  // },
   {
     path: '',
     component: HomeComponent
@@ -59,6 +45,14 @@ const routes: Routes = [
   {
     path: ':slug',
     component: PostComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'addpost',
+    component: AddPostInfoComponent
   }
 ];
 
