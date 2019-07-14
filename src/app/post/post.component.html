@@ -1,8 +1,7 @@
 <main>
   <div class="position-relative">
     <section class="section section-lg section-shaped pb-200 bg-gradient-default">
-      <div class="shape shape-style-1 shape-default">
-        <span></span>
+      <div class="shape shape-style-1 bg-gradient-default">
         <span></span>
         <span></span>
         <span></span>
@@ -60,19 +59,19 @@
           <h5>Listen to this episode on:</h5>
           <ul class="post-social-links">
             <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="{{episode.itunes_url}}" target="_blank" data-toggle="tooltip" title="Subscribe on iTunes">
+              <a class="nav-link nav-link-icon" href="{{episode?.itunes_url}}" target="_blank" data-toggle="tooltip" title="Subscribe on iTunes">
                 <i class="fab fa-itunes"></i>
                 <span class="nav-link-inner--text d-lg-none">iTunes</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="{{episode.youtube_url}}" target="_blank" data-toggle="tooltip" title="Listen on YouTube">
+              <a class="nav-link nav-link-icon" href="{{episode?.youtube_url}}" target="_blank" data-toggle="tooltip" title="Listen on YouTube">
                 <i class="fab fa-youtube-square"></i>
                 <span class="nav-link-inner--text d-lg-none">YouTube</span>
               </a>
             </li>
             <li>
-              <a class="nav-link nav-link-icon" href="{{episode.spotify_url}}" target="_blank" data-toggle="tooltip" title="Subscribe on Spotify">
+              <a class="nav-link nav-link-icon" href="{{episode?.spotify_url}}" target="_blank" data-toggle="tooltip" title="Subscribe on Spotify">
                 <i class="fab fa-spotify"></i>
                 <span class="nav-link-inner--text d-lg-none">Spotify</span>
               </a>

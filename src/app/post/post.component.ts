@@ -96,6 +96,7 @@ export class PostComponent implements OnInit, AfterViewChecked {
       .then(slug => {
         butterService.post.retrieve(slug)
           .then((res) => {
+            console.log(res);
             this.post = res.data;
             this.postSlug = this.post.data.slug;
             this.step2 = false;
@@ -126,8 +127,6 @@ export class PostComponent implements OnInit, AfterViewChecked {
         if (!this.episode) {
           return;
         } else {
-          console.log(this.episode.embed_url);
-          console.log(this.iframeUrl);
           return this.episode;
         }
       }
@@ -143,7 +142,7 @@ export class PostComponent implements OnInit, AfterViewChecked {
   }
 
   displayData() {
-    if (this.post) {
+    if (this.post && this.episode) {
       this.step4 = false;
       this.loading = false;
       this.showData = true;
