@@ -20,15 +20,6 @@ export class EpisodeService {
     private http: HttpClient
   ) { }
 
-  getEpisodes() {
-  return this.http.get<any>('https://itmightbeinteresting.herokuapp.com/api/episodes')
-    .toPromise()
-    .then(res => <Episode[]>res.data)
-    .then(data => {
-      return data;
-    });
-  }
-
   fetchEpisodes(): Observable<any> {
     return this.http.get('https://itmightbeinteresting.herokuapp.com/api/episodes')
       .pipe(
