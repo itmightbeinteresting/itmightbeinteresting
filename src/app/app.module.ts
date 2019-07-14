@@ -7,8 +7,8 @@ import { AppRoutingModule } from './app.routing';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
@@ -51,6 +51,7 @@ import { AddPostInfoComponent } from './forms/post-info.component';
     HttpClientModule,
     NgbModule.forRoot(),
     FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     AppRoutingModule,
     HomeModule

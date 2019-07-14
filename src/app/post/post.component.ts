@@ -97,6 +97,7 @@ export class PostComponent implements OnInit, AfterViewChecked {
         butterService.post.retrieve(slug)
           .then((res) => {
             this.post = res.data;
+            console.log(this.post);
             this.postSlug = this.post.data.slug;
             this.step2 = false;
             this.step3 = true;
