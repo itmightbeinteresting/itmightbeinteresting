@@ -65,3 +65,30 @@ ul.post-social-links li a i {
   margin-left: 4px;
   margin-right: 4px;
 }
+
+@media only screen and (max-width: 400px) {
+  .bootstrap-bar {
+    width: 100vw !important;
+  }
+
+  .post-title {
+    margin-top: 70px;
+    margin-bottom: -30px;
+  }
+
+  .post-img img {
+    width: 100vw !important;
+  }
+
+  .social-post-links {
+    text-align: center;
+  }
+
+  .blog-card {
+    display: block;
+  }
+
+  .blog-image-block {
+    margin-bottom: 20px;
+  }
+}

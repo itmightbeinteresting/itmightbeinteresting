@@ -22,7 +22,7 @@ import { Episode } from '../models/episode';
 export class PostComponent implements OnInit, AfterViewChecked {
   posts: any;
   highlighted: boolean = false;
-  loading: boolean = true;
+  loading: boolean = false;
   postError: boolean;
   tag: any;
   step1: boolean;
@@ -55,7 +55,7 @@ export class PostComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
-    this.showData = false;
+    this.showData = true;
     this.step1 = true;
     this.progressLoaderOne();
   }
