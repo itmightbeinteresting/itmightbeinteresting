@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Creds } from 'private/private';
+import { butterService } from '../services/butterCMS.service';
 
 @Component({
   selector: 'app-post-info',
@@ -6,17 +9,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../app.component.scss']
 })
 export class AddPostInfoComponent implements OnInit {
-  focus1: any;
-  focus2: any;
-  focus3: any;
-  focus4: any;
-  focus5: any;
-  focus6: any;
-  focus7: any;
-  focus8: any;
+  creds: any = Creds;
+  posts: any;
+  slug: string;
+  websiteUrl: string;
+  selectedPost: any;
 
-  constructor() {}
+  constructor(
+    private router: Router
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(sessionStorage.email);
+    if (!sessionStorage.email || sessionStorage.email !== this.creds.email) {
+      this.router.navigate(['/login']);
+    }
+    this.fetchPosts();
+  }
 
+  fetchPosts() {
+    butterService.post.list({
+      page: 1,
+      page_size: 10
+    })
+    .then((res) => {
+      this.posts = res.data.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  selectPost(post) {
+    this.selectedPost = post;
+    this.websiteUrl = `https://itmightbeinteresting.com/${this.selectedPost.slug}`;
+    console.log(this.websiteUrl.toString());
+  }
 }

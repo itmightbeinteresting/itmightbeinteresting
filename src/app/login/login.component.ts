@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Creds } from 'private/private';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class LoginComponent implements OnInit {
   focus: any;
   focus1: any;
+  loginError: boolean;
   creds: any = Creds;
   loginForm: FormGroup;
   formval: any;
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -32,9 +34,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.loginForm.value.email !== this.creds.email) {
-      console.log('Wrong email!');
+    if (this.loginForm.value.email !== this.creds.email || this.loginForm.value.password !== this.creds.password) {
+      this.loginError = true;
+    } else if (this.loginForm.value.email === this.creds.email || this.loginForm.value.password === this.creds.password) {
+      sessionStorage.setItem('email', this.loginForm.value.email);
+      this.router.navigate(['/addpost']);
     }
   }
-
 }

@@ -21,45 +21,58 @@
             </div>
             <div class="card-body px-lg-5 py-lg-5">
               <form role="form">
-                <div class="form-group mb-3" [ngClass]="{'focused':focus1===true}">
-                  <div class="input-group input-group-alternative">
-                    <input class="form-control" placeholder="Title" type="text" (focus)="focus1=true" (blur)="focus1=false">
-                  </div>
+                <div class="form-group mb-1">
+                  <mat-form-field>
+                    <mat-label>Select</mat-label>
+                    <mat-select>
+                      <mat-option *ngFor="let post of posts" [value]="post.title" (click)="selectPost(post)">{{post.title}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
-                <div class="form-group mb-3" [ngClass]="{'focused':focus2===true}">
-                  <div class="input-group input-group-alternative">
-                    <input class="form-control" placeholder="Slug" type="text" (focus)="focus2=true" (blur)="focus2=false">
-                  </div>
+                <div *ngIf="!selectedPost" class="form-group mb-1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput #slug type="text" placeholder="Slug" required>
+                  </mat-form-field>
                 </div>
-                <div class="form-group mb-3" [ngClass]="{'focused':focus3===true}">
-                  <div class="input-group input-group-alternative">
-                    <input class="form-control" placeholder="Website URL" type="url" (focus)="focus3=true" (blur)="focus3=false">
-                  </div>
+                <div *ngIf="selectedPost" class="form-group mb-1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput #slug type="text" [value]="selectedPost.slug" placeholder="Slug" required>
+                  </mat-form-field>
                 </div>
-                <div class="form-group mb-3" [ngClass]="{'focused':focus4===true}">
-                  <div class="input-group input-group-alternative">
-                    <input class="form-control" placeholder="Download URL" type="url" (focus)="focus4=true" (blur)="focus4=false">
-                  </div>
+                <div *ngIf="!selectedPost" class="form-group mb-1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput #website type="text" placeholder="Website URL" required>
+                  </mat-form-field>
                 </div>
-                <div class="form-group mb-3" [ngClass]="{'focused':focus5===true}">
-                  <div class="input-group input-group-alternative">
-                    <input class="form-control" placeholder="Embed URL" type="url" (focus)="focus5=true" (blur)="focus5=false">
-                  </div>
+                <div *ngIf="selectedPost" class="form-group mb-1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput #website type="text" [value]="websiteUrl" placeholder="Website URL" required>
+                  </mat-form-field>
                 </div>
-                <div class="form-group mb-3" [ngClass]="{'focused':focus6===true}">
-                  <div class="input-group input-group-alternative">
-                    <input class="form-control" placeholder="iTunes URL" type="url" (focus)="focus6=true" (blur)="focus6=false">
-                  </div>
+                <div class="form-group mb-1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput #download type="url" placeholder="Download URL" required>
+                  </mat-form-field>
                 </div>
-                <div class="form-group mb-3" [ngClass]="{'focused':focus7===true}">
-                  <div class="input-group input-group-alternative">
-                    <input class="form-control" placeholder="YouTube URL" type="url" (focus)="focus7=true" (blur)="focus7=false">
-                  </div>
+                <div class="form-group mb-1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput #embed type="url" placeholder="Embed URL" required>
+                  </mat-form-field>
                 </div>
-                <div class="form-group mb-3" [ngClass]="{'focused':focus8===true}">
-                  <div class="input-group input-group-alternative">
-                    <input class="form-control" placeholder="Spotify URL" type="url" (focus)="focus8=true" (blur)="focus8=false">
-                  </div>
+                <div class="form-group mb-1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput #itunes type="url" placeholder="iTunes URL">
+                  </mat-form-field>
+                </div>
+                <div class="form-group mb-1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput #youtube type="url" placeholder="YouTube URL">
+                  </mat-form-field>
+                </div>
+                <div class="form-group mb-1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput #spotify type="url" placeholder="Spotify URL">
+                  </mat-form-field>
                 </div>
                 <div class="text-center">
                   <button type="button" class="btn btn-primary my-4">Submit</button>
