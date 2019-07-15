@@ -44,8 +44,8 @@
             <p *ngIf="step4"><ngb-progressbar type="success" [value]="100" [striped]="true" [animated]="true" height="35px"><i class="bootstrap-bar"><p>Success!</p></i></ngb-progressbar></p>
           </div>
         </div>
-        <h5 *ngIf="!loading" class="text-center tags-title">Tags:</h5>
-        <div *ngIf="!loading" class="col-lg-12 text-center tag-section post-tag-section">
+        <h5 *ngIf="!loading && post.data?.tags" class="text-center tags-title">Tags:</h5>
+        <div *ngIf="!loading && post.data?.tags" class="col-lg-12 text-center tag-section post-tag-section">
           <ul class="tag-list post-tag-list">
             <li *ngFor="let tag of post.data?.tags">
               <span class="badge badge-pill badge-default card-click" (click)="selectTag(tag)">{{ tag.name }}</span>
