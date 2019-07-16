@@ -97,24 +97,17 @@ export class PostComponent implements OnInit, AfterViewChecked {
   }
 
   async fetchDatabasePost() {
-    this.episodeService.fetchEpisodes().subscribe(data => {
-      if (!data || !data.episodes) {
-        this.alert = true;
+    this.postSlug = this.postSlug.toString();
+    this.episodeService.getEpisode(this.postSlug).subscribe(data => {
+      if (!data || !data.episode) {
+        console.log(data);
+        this.embedURL();
+        return;
       } else {
-        this.episodes = data.episodes;
-        for (let i = 0; i < this.episodes.length; i++) {
-          if (this.episodes[i].slug === this.postSlug) {
-            this.episode = this.episodes[i];
-            this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.episode.embed_url);
-          }
-        }
-        if (!this.episode) {
-          console.log(data);
-          return;
-        } else {
-          this.embedURL();
-          return this.episode;
-        }
+        this.episode = data.episode;
+        this.embedURL();
+        this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.episode.embed_url);
+        return this.episode;
       }
     });
   }
@@ -122,6 +115,7 @@ export class PostComponent implements OnInit, AfterViewChecked {
   async embedURL() {
     setTimeout(() => {
       if (!this.episode) {
+        this.displayData();
         return;
       } else {
         this.displayData();
@@ -131,7 +125,7 @@ export class PostComponent implements OnInit, AfterViewChecked {
   }
 
   async displayData() {
-    if (this.post && this.episode) {
+    if (this.post) {
       this.loading = false;
       this.alert = false;
       this.showData = true;

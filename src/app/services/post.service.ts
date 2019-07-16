@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Episode } from '../models/episode';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,8 +21,16 @@ export class EpisodeService {
     private http: HttpClient
   ) { }
 
-  fetchEpisodes(): Observable<any> {
-    return this.http.get('https://itmightbeinteresting.herokuapp.com/api/episodes')
+  getEpisode(
+    slug: string
+  ): Observable<any> {
+    const mapObj = {
+      '{slug}': slug
+    };
+    const url = environment.postUrl.replace(/{slug}/gi, function (matched) {
+      return mapObj[matched];
+    });
+    return this.http.get(url)
       .pipe(
         map(data => {
           if (data) {
