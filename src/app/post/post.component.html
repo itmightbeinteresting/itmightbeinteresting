@@ -35,15 +35,15 @@
       <img *ngIf="!loading" src="{{ post.data?.featured_image }}" />
     </div>
     <div class="container">
+      <div *ngIf="loading" class="spinner-container">
+        <p-progressSpinner [style]="{width: '150px', height: '150px'}" strokeWidth="4"></p-progressSpinner>
+      </div>
       <div class="row justify-content-center post-content">
-        <div class="col-lg-12 blog-loader">
-          <div>
-            <p *ngIf="step1"><ngb-progressbar type="danger" [value]="25" [striped]="true" [animated]="true" height="35px"><i class="bootstrap-bar"><p>Initializing...</p></i></ngb-progressbar></p>
-            <p *ngIf="step2"><ngb-progressbar type="warning" [value]="50" [striped]="true" [animated]="true" height="35px"><i class="bootstrap-bar"><p>Gathering Data...</p></i></ngb-progressbar></p>
-            <p *ngIf="step3"><ngb-progressbar type="info" [value]="75" [striped]="true" [animated]="true" height="35px"><i class="bootstrap-bar"><p>Rendering...</p></i></ngb-progressbar></p>
-            <p *ngIf="step4"><ngb-progressbar type="success" [value]="100" [striped]="true" [animated]="true" height="35px"><i class="bootstrap-bar"><p>Success!</p></i></ngb-progressbar></p>
-          </div>
-        </div>
+        <p *ngIf="alert">
+          <ngb-alert [dismissible]="false" type="danger">
+            <strong>Unable to load content. Please refresh the page to try again.</strong>
+          </ngb-alert>
+        </p>
         <h5 *ngIf="!loading && post.data?.tags" class="text-center tags-title">Tags:</h5>
         <div *ngIf="!loading && post.data?.tags" class="col-lg-12 text-center tag-section post-tag-section">
           <ul class="tag-list post-tag-list">

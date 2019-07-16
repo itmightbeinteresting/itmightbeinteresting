@@ -66,6 +66,37 @@ ul.post-social-links li a i {
   margin-right: 4px;
 }
 
+.alert-danger {
+  background-color: darkred;
+  font-size: 1.15rem;
+  text-align: center;
+  padding: 25px !important;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #ffffff;
+  }
+  40% {
+    stroke: #ffffff;
+  }
+  66% {
+    stroke: #ffffff;
+  }
+  80%,
+  90% {
+    stroke: #ffffff;
+  }
+}
+
 @media only screen and (max-width: 400px) {
   .bootstrap-bar {
     width: 100vw !important;

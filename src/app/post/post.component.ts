@@ -22,13 +22,10 @@ import { Episode } from '../models/episode';
 export class PostComponent implements OnInit, AfterViewChecked {
   posts: any;
   highlighted: boolean = false;
-  loading: boolean = false;
+  loading: boolean;
+  alert: boolean;
   postError: boolean;
   tag: any;
-  step1: boolean;
-  step2: boolean;
-  step3: boolean;
-  step4: boolean;
   showData: boolean;
   episodes: Episode[];
   episode: Episode;
@@ -54,38 +51,19 @@ export class PostComponent implements OnInit, AfterViewChecked {
     this.highlighted = true;
   }
 
-  ngOnInit() {
-    this.showData = true;
-    this.step1 = true;
-    this.progressLoaderOne();
+  async ngOnInit() {
+    this.loading = true;
+    this.delayFetch();
   }
 
-  progressLoaderOne() {
-    const stepOne = setTimeout(() => {
-      this.step1 = false;
-      this.step2 = true;
+  async delayFetch() {
+    const fetchDelay = setTimeout(() => {
       this.fetchPost();
-      return stepOne;
-    }, 750);
-  }
-
-  progressLoaderTwo() {
-    const stepTwo = setTimeout(() => {
-      this.step3 = false;
-      this.step4 = true;
-      this.progressLoaderThree();
-      return stepTwo;
-    }, 750);
-  }
-
-  progressLoaderThree() {
-    const stepThree = setTimeout(() => {
-      this.displayData();
-      return stepThree;
+      return fetchDelay;
     }, 250);
   }
 
-  fetchPost() {
+  async fetchPost() {
     this.slug$ = this.route.paramMap
       .pipe(
         map(params => (params.get('slug')))
@@ -96,25 +74,33 @@ export class PostComponent implements OnInit, AfterViewChecked {
       .then(slug => {
         butterService.post.retrieve(slug)
           .then((res) => {
-            this.post = res.data;
-            console.log(this.post);
-            this.postSlug = this.post.data.slug;
-            this.step2 = false;
-            this.step3 = true;
-            this.progressLoaderTwo();
+            if (!res || !res.data) {
+              this.alert = true;
+              this.loading = false;
+              console.log(res);
+            } else {
+              this.post = res.data;
+              this.postSlug = this.post.data.slug;
+              this.delayDatabase();
+            }
           })
-          .catch((res) => {
-            return res;
+          .catch((err) => {
+            return err;
           });
-      }).then(() => {
-        this.fetchDatabasePost();
       });
   }
 
-  fetchDatabasePost() {
+  async delayDatabase() {
+    const dbDelay = setTimeout(() => {
+      this.fetchDatabasePost();
+      return dbDelay;
+    }, 500);
+  }
+
+  async fetchDatabasePost() {
     this.episodeService.fetchEpisodes().subscribe(data => {
-      if (!data) {
-        this.postError = true;
+      if (!data || !data.episodes) {
+        this.alert = true;
         this.loading = false;
       } else {
         this.episodes = data.episodes;
@@ -125,26 +111,35 @@ export class PostComponent implements OnInit, AfterViewChecked {
           }
         }
         if (!this.episode) {
+          this.alert = true;
+          this.loading = false;
+          console.log(data);
           return;
         } else {
+          this.embedURL();
           return this.episode;
         }
       }
     });
   }
 
-  embedURL() {
-    if (!this.episode) {
-      return;
-    } else {
-      return this.sanitizer.bypassSecurityTrustUrl(this.episode.embed_url);
-    }
+  async embedURL() {
+    setTimeout(() => {
+      if (!this.episode) {
+        this.alert = true;
+        this.loading = false;
+        return;
+      } else {
+        this.displayData();
+        return this.sanitizer.bypassSecurityTrustUrl(this.episode.embed_url);
+      }
+    }, 500);
   }
 
-  displayData() {
+  async displayData() {
     if (this.post && this.episode) {
-      this.step4 = false;
       this.loading = false;
+      this.alert = false;
       this.showData = true;
     }
   }
