@@ -60,6 +60,7 @@ import {
   MatStepperModule
 } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { PrimeNGBundleModule } from './primeng.module';
 
 @NgModule({
   exports: [
@@ -127,7 +128,8 @@ export class MaterialModule {}
     ReactiveFormsModule,
     RouterModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    PrimeNGBundleModule
   ],
   providers: [
     HighlightService

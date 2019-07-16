@@ -12,79 +12,65 @@ import { Router } from '@angular/router';
 })
 
 export class HomeComponent implements OnInit {
-  posts: any;
-  tag: any;
   loading: boolean;
-  step1: boolean;
-  step2: boolean;
-  step3: boolean;
-  step4: boolean;
+  alert: any;
+  posts: any;
   showData: boolean;
+  tag: any;
 
   constructor(
     private router: Router
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.loading = true;
+    this.alert = false;
     this.showData = false;
-    this.step1 = true;
-    this.progressLoaderOne();
+    this.delayFetch();
   }
 
-  progressLoaderOne() {
-    const stepOne = setTimeout(() => {
-      this.step1 = false;
-      this.step2 = true;
+  async delayFetch() {
+    const fetchDelay = setTimeout(() => {
       this.fetchPosts();
-      return stepOne;
+      return fetchDelay;
     }, 750);
   }
 
-  progressLoaderTwo() {
-    const stepTwo = setTimeout(() => {
-      this.step3 = false;
-      this.step4 = true;
-      this.progressLoaderThree();
-      return stepTwo;
-    }, 750);
-  }
-
-  progressLoaderThree() {
-    const stepThree = setTimeout(() => {
-      this.displayData();
-      return stepThree;
-    }, 250);
-  }
-
-  fetchPosts() {
+  async fetchPosts() {
     butterService.post.list({
       page: 1,
       page_size: 10
     })
     .then((res) => {
-      this.posts = res.data.data;
-      this.step2 = false;
-      this.step3 = true;
-      this.progressLoaderTwo();
+      if (!res || !res.data || !res.data.data) {
+        this.loading = false;
+        this.alert = true;
+      } else {
+        this.posts = res.data.data;
+        this.alert = false;
+        this.displayData();
+      }
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
   }
 
-  displayData() {
+  async displayData() {
     if (this.posts) {
-      this.step4 = false;
-      // this.loading = false;
-      this.showData = true;
+      const loadDom = setTimeout(() => {
+        this.loading = false;
+        this.showData = true;
+        return loadDom;
+      }, 450);
+    } else {
+      this.alert = true;
     }
   }
 
   selectTag(tag) {
     this.tag = tag.slug;
     localStorage.setItem('tag', this.tag);
-    console.log(localStorage);
     this.router.navigate(['/tag/', this.tag]);
   }
-
 }
