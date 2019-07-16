@@ -13,11 +13,11 @@
       </div>
       <div class="container py-lg-md d-flex">
         <div class="col px-0">
-          <div class="row text-center justify-content-center post-title">
-            <div *ngIf="!loading" class="col-lg-12">
+          <div *ngIf="post && !loading" class="row text-center justify-content-center post-title">
+            <div class="col-lg-12">
               <h1 class="display-3 text-white">{{ post.data?.title }}</h1>
             </div>
-            <div *ngIf="!loading" class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center">
               <h4 class="post-date">{{ post.data?.published | date }}</h4>
             </div>
           </div>
@@ -32,7 +32,7 @@
   </div>
   <section class="section section-lg-0 pt-lg-0 mt--200 col-xs-12">
     <div class="post-img col-xs-12">
-      <img *ngIf="!loading" src="{{ post.data?.featured_image }}" />
+      <img *ngIf="post && !loading" src="{{ post.data?.featured_image }}" />
     </div>
     <div class="container">
       <div *ngIf="loading" class="spinner-container">
@@ -54,8 +54,8 @@
         </div>
       </div>
       <div class="row justify-content-center post-content">
-        <iframe *ngIf="!loading && episode.embed_url" width="100%" height="135" style="border: none;" title="Ep.01: The State of Religion in America" [src]="iframeUrl" scrolling="no" data-name="pb-iframe-player"></iframe>
-        <div *ngIf="!loading" class="social-post-links">
+        <iframe *ngIf="!loading && episode" width="100%" height="135" style="border: none;" title="Ep.01: The State of Religion in America" [src]="iframeUrl" scrolling="no" data-name="pb-iframe-player"></iframe>
+        <div *ngIf="!loading && episode" class="social-post-links">
           <h5>Listen to this episode on:</h5>
           <ul class="post-social-links">
             <li class="nav-item">
@@ -78,7 +78,7 @@
             </li>
           </ul>
         </div>
-        <div *ngIf="!loading" class="col-lg-12 post-inner" [innerHTML]="post.data?.body"></div>
+        <div *ngIf="!loading && post" class="col-lg-12 post-inner" [innerHTML]="post.data?.body"></div>
       </div>
     </div>
   </section>
