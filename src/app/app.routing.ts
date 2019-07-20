@@ -12,6 +12,7 @@ import { PostsByCategoryComponent } from './categories/posts-category.component'
 import { TagsComponent } from './tags/tags.component';
 import { PostsByTagComponent } from './tags/posts-tag.component';
 import { AboutComponent } from './about/about.component';
+import { RedirectComponent } from './invalid/url.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    redirectTo: ''
   },
   {
     path: 'login',
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path: ':slug',
     component: PostComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 

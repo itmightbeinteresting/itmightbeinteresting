@@ -61,6 +61,7 @@ import {
 } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { PrimeNGBundleModule } from './primeng.module';
+import { RedirectComponent } from './invalid/url.component';
 
 @NgModule({
   exports: [
@@ -113,7 +114,8 @@ export class MaterialModule {}
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    AddPostInfoComponent
+    AddPostInfoComponent,
+    RedirectComponent
   ],
   imports: [
     BrowserModule,
