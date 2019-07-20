@@ -110,8 +110,8 @@ h3.upcoming {
   }
 
   .post-content p {
-    font-size: 1.8rem !important;
-    line-height: 2 !important;
+    font-size: 1.4rem !important;
+    line-height: 1.6 !important;
   }
 }
 
@@ -133,8 +133,12 @@ h3.upcoming {
     text-align: center !important;
   }
 
+  .post-img {
+    width: 95% !important;
+  }
+
   .post-img img {
-    width: 100vw !important;
+    width: 95% !important;
   }
 
   .social-post-links {

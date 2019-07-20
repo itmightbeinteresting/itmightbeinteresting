@@ -54,26 +54,23 @@
         </div>
       </div>
       <div class="row justify-content-center post-content">
-        <iframe *ngIf="!loading && options" width="100%" height="135" style="border: none;" title="Ep.01: The State of Religion in America" [src]="iframeUrl" scrolling="no" data-name="pb-iframe-player"></iframe>
+        <iframe *ngIf="!loading && options" width="95%" height="135" style="border: none;" title="Ep.01: The State of Religion in America" [src]="iframeUrl" scrolling="no" data-name="pb-iframe-player"></iframe>
         <div *ngIf="!loading && options" class="social-post-links">
           <h5>Listen to this episode on:</h5>
           <ul class="post-social-links">
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="{{episode?.itunes_url}}" target="_blank" data-toggle="tooltip" title="Subscribe on iTunes">
                 <i class="fab fa-itunes"></i>
-                <span class="nav-link-inner--text d-lg-none">iTunes</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="{{episode?.youtube_url}}" target="_blank" data-toggle="tooltip" title="Listen on YouTube">
                 <i class="fab fa-youtube-square"></i>
-                <span class="nav-link-inner--text d-lg-none">YouTube</span>
               </a>
             </li>
             <li>
               <a class="nav-link nav-link-icon" href="{{episode?.spotify_url}}" target="_blank" data-toggle="tooltip" title="Subscribe on Spotify">
                 <i class="fab fa-spotify"></i>
-                <span class="nav-link-inner--text d-lg-none">Spotify</span>
               </a>
             </li>
           </ul>
