@@ -104,10 +104,11 @@ export class PostComponent implements OnInit, AfterViewChecked {
         return;
       } else {
         this.episode = data.episode;
-        if (this.episode.embed_url === null) {
-          this.options = null;
+        if (this.episode.embed_url === null || this.episode.embed_url === '') {
+          this.options = false;
           this.displayData();
         } else {
+          this.options = true;
           this.embedURL();
         }
         this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.episode.embed_url);
