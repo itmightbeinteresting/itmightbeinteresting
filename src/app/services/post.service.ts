@@ -32,12 +32,8 @@ export class EpisodeService {
     });
     return this.http.get(url)
       .pipe(
-        map(data => {
-          if (data) {
-            return data;
-          } else {
-            return console.log('No Data Found!');
-          }
+        map(res => {
+          return res;
         })
       );
   }

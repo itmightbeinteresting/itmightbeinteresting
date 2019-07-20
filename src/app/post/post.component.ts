@@ -25,6 +25,7 @@ export class PostComponent implements OnInit, AfterViewChecked {
   loading: boolean;
   alert: boolean;
   tag: any;
+  options: any;
   showData: boolean;
   episodes: Episode[];
   episode: Episode;
@@ -99,13 +100,17 @@ export class PostComponent implements OnInit, AfterViewChecked {
   async fetchDatabasePost() {
     this.postSlug = this.postSlug.toString();
     this.episodeService.getEpisode(this.postSlug).subscribe(data => {
-      if (!data || !data.episode) {
-        console.log(data);
-        this.embedURL();
+      if (!data) {
+        this.displayData();
         return;
       } else {
         this.episode = data.episode;
-        this.embedURL();
+        if (this.episode.embed_url === null) {
+          this.options = null;
+          this.displayData();
+        } else {
+          this.embedURL();
+        }
         this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.episode.embed_url);
         return this.episode;
       }
