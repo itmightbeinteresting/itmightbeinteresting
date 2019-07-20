@@ -54,10 +54,6 @@ const routes: Routes = [
   {
     path: ':slug',
     component: PostComponent
-  },
-  {
-    path: '**',
-    redirectTo: ''
   }
 ];
 
