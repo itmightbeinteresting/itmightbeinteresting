@@ -12,44 +12,14 @@ export class PostsByTagComponent implements OnInit {
   categories: any;
   tag: any;
   posts: any;
-  step1: boolean;
-  step2: boolean;
-  step3: boolean;
-  step4: boolean;
   showData: boolean;
 
   constructor() { }
 
   ngOnInit() {
     this.showData = false;
-    this.step1 = true;
-    this.progressLoaderOne();
     this.tag = localStorage.tag;
-  }
-
-  progressLoaderOne() {
-    const stepOne = setTimeout(() => {
-      this.step1 = false;
-      this.step2 = true;
-      this.getPostsByTag();
-      return stepOne;
-    }, 750);
-  }
-
-  progressLoaderTwo() {
-    const stepTwo = setTimeout(() => {
-      this.step3 = false;
-      this.step4 = true;
-      this.progressLoaderThree();
-      return stepTwo;
-    }, 750);
-  }
-
-  progressLoaderThree() {
-    const stepThree = setTimeout(() => {
-      this.displayData();
-      return stepThree;
-    }, 250);
+    this.getPostsByTag();
   }
 
   getPostsByTag() {
@@ -59,15 +29,12 @@ export class PostsByTagComponent implements OnInit {
       .then((res) => {
         this.tag = res.data.data.name;
         this.posts = res.data.data.recent_posts;
-        this.step2 = false;
-        this.step3 = true;
-        this.progressLoaderTwo();
+        this.displayData();
       });
   }
 
   displayData() {
     if (this.posts) {
-      this.step4 = false;
       this.loading = false;
       this.showData = true;
     }

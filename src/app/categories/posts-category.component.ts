@@ -14,10 +14,6 @@ export class PostsByCategoryComponent implements OnInit {
   category: any;
   posts: any;
   tag: any;
-  step1: boolean;
-  step2: boolean;
-  step3: boolean;
-  step4: boolean;
   showData: boolean;
 
   constructor(
@@ -26,34 +22,8 @@ export class PostsByCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.showData = false;
-    this.step1 = true;
     this.category = localStorage.category;
-    this.progressLoaderOne();
-  }
-
-  progressLoaderOne() {
-    const stepOne = setTimeout(() => {
-      this.step1 = false;
-      this.step2 = true;
-      this.getPostsByCategory();
-      return stepOne;
-    }, 750);
-  }
-
-  progressLoaderTwo() {
-    const stepTwo = setTimeout(() => {
-      this.step3 = false;
-      this.step4 = true;
-      this.progressLoaderThree();
-      return stepTwo;
-    }, 750);
-  }
-
-  progressLoaderThree() {
-    const stepThree = setTimeout(() => {
-      this.displayData();
-      return stepThree;
-    }, 250);
+    this.getPostsByCategory();
   }
 
   getPostsByCategory() {
@@ -63,15 +33,12 @@ export class PostsByCategoryComponent implements OnInit {
       .then((res) => {
         this.category = res.data.data.name;
         this.posts = res.data.data.recent_posts;
-        this.step2 = false;
-        this.step3 = true;
-        this.progressLoaderTwo();
+        this.displayData();
       });
   }
 
   displayData() {
     if (this.posts) {
-      this.step4 = false;
       this.loading = false;
       this.showData = true;
     }

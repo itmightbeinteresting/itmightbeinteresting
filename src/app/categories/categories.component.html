@@ -32,15 +32,10 @@
   </div>
   <section class="section section-lg-0 pt-lg-0 mt--200">
     <div class="container">
+      <div *ngIf="loading" class="spinner-container">
+        <p-progressSpinner [style]="{width: '150px', height: '150px'}" strokeWidth="4"></p-progressSpinner>
+      </div>
       <div class="row justify-content-center">
-        <div class="col-lg-12 blog-loader">
-          <div>
-            <p *ngIf="step1"><ngb-progressbar type="danger" [value]="25" [striped]="true" [animated]="true" height="35px"><i class="bootstrap-bar"><p>Initializing...</p></i></ngb-progressbar></p>
-            <p *ngIf="step2"><ngb-progressbar type="warning" [value]="50" [striped]="true" [animated]="true" height="35px"><i class="bootstrap-bar"><p>Gathering Data...</p></i></ngb-progressbar></p>
-            <p *ngIf="step3"><ngb-progressbar type="info" [value]="75" [striped]="true" [animated]="true" height="35px"><i class="bootstrap-bar"><p>Rendering...</p></i></ngb-progressbar></p>
-            <p *ngIf="step4"><ngb-progressbar type="success" [value]="100" [striped]="true" [animated]="true" height="35px"><i class="bootstrap-bar"><p>Success!</p></i></ngb-progressbar></p>
-          </div>
-        </div>
         <div class="col-lg-12 blog-list">
           <ul [hidden]="!showData">
             <li *ngFor="let category of categories">
