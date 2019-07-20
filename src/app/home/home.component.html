@@ -56,9 +56,9 @@
                       </div>
                       <div class="blog-list-content col-lg-9">
                         <a routerLink="{{ post.slug }}">
-                          <h5 class="text-default blog-title text-uppercase">{{ post.title }}</h5>
+                          <h5 class="text-default blog-title">{{ post.title }}</h5>
                         </a>
-                        <h6>{{ post.published | date }}</h6>
+                        <h6 class="blog-date">{{ post.published | date }}</h6>
                         <p class="blog-description mt-3">{{ post.summary }}</p>
                         <div class="tag-section main-tags">
                           <ul class="tag-list">
