@@ -7,7 +7,6 @@ import { map, take } from 'rxjs/operators';
 import { HighlightService } from '../services/highlight.service';
 import { EpisodeService } from '../services/post.service';
 import { Episode } from '../models/episode';
-import { log } from 'util';
 
 @Component({
   selector: 'app-post',
@@ -78,7 +77,6 @@ export class PostComponent implements OnInit, AfterViewChecked {
             if (!res || !res.data) {
               this.alert = true;
               this.loading = false;
-              this.router.navigate(['/', this.tag]);
             } else {
               this.post = res.data;
               this.postSlug = this.post.data.slug;
