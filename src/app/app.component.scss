@@ -80,6 +80,12 @@ ul.post-social-links li a i {
   width: 100%;
 }
 
+h3.upcoming {
+  margin-bottom: 2rem !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+}
+
 @keyframes ui-progress-spinner-color {
   100%,
   0% {
@@ -94,6 +100,18 @@ ul.post-social-links li a i {
   80%,
   90% {
     stroke: #ffffff;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .post-title {
+    margin-top: 70px !important;
+    margin-bottom: -30px !important;
+  }
+
+  .post-content p {
+    font-size: 1.8rem !important;
+    line-height: 2 !important;
   }
 }
 
