@@ -1,6 +1,6 @@
 {
   "name": "itmightbeinteresting",
-  "version": "5.5.0",
+  "version": "6.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
@@ -32,7 +32,7 @@
     "@ng-bootstrap/ng-bootstrap": "4.1.0",
     "@ngx-prism/core": "^2.0.1",
     "@types/prismjs": "^1.9.0",
-    "buttercms": "^1.1.4",
+    "buttercms": "1.1.4",
     "chart.js": "^2.8.0",
     "jw-bootstrap-switch-ng2": "2.0.5",
     "moment": "^2.24.0",
