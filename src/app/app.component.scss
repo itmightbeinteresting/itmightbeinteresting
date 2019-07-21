@@ -1,3 +1,48 @@
+.navbar-toggler {
+  padding: 1.5rem !important;
+}
+
+.navbar-toggler i {
+  font-size: 26px !important;
+  color: #1A1D4D !important;
+}
+
+.flex-menu-toggle {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 30px;
+}
+
+.navbar-collapse .navbar-toggler span {
+  width: 70%;
+  height: 3px;
+  margin-top: -8px;
+  font-weight: 700;
+}
+
+.collapsable-links li {
+  border-bottom: 1px solid !important;
+}
+
+.collapsable-links li a {
+  font-size: 24px !important;
+}
+
+.collapsed-social li a {
+  display: flex;
+  align-items: center;
+}
+
+.collapsed-social li a i {
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.collapsed-social li a span {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
 .progress {
   width: 1000px;
 }
@@ -120,6 +165,13 @@ h3.upcoming {
 }
 
 @media only screen and (max-width: 600px) {
+  .navbar-collapse .navbar-toggler span {
+    width: 60%;
+    height: 3px;
+    margin-top: -8px;
+    font-weight: 700;
+  }
+
   .bootstrap-bar {
     width: 100vw !important;
   }

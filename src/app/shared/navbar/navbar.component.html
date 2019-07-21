@@ -5,17 +5,17 @@
     </a>
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
         [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
-      <span class="navbar-toggler-icon"></span>
+      <i class="fas fa-bars"></i>
     </button>
     <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
       <div class="navbar-collapse-header">
         <div class="row">
-          <div class="col-6 collapse-brand">
+          <!-- <div class="col-6 collapse-brand">
             <a [routerLink]="['/']">
               <img src="./assets/img/It_Might_Be_Interesting_Black.jpg">
             </a>
-          </div>
-          <div class="col-6 collapse-close">
+          </div> -->
+          <div class="col-12 collapse-close flex-menu-toggle">
             <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
                 [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
               <span></span>
@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      <ul class="navbar-nav align-items-lg-center">
+      <ul class="navbar-nav align-items-lg-center collapsable-links">
         <li class="nav-item">
           <a [routerLink]="['/']" class="dropdown-item">Episodes</a>
         </li>
@@ -38,7 +38,7 @@
           <a [routerLink]="['/about']" class="dropdown-item">About</a>
         </li>
       </ul>
-      <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+      <ul class="navbar-nav align-items-lg-center ml-lg-auto collapsed-social">
         <li class="nav-item">
           <a class="nav-link nav-link-icon" href="https://www.facebook.com/itmightbeinteresting" target="_blank" data-toggle="tooltip" title="Subscribe on iTunes">
             <i class="fab fa-itunes"></i>
