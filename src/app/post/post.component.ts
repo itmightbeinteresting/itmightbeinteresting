@@ -54,14 +54,7 @@ export class PostComponent implements OnInit, AfterViewChecked {
 
   async ngOnInit() {
     this.loading = true;
-    this.delayFetch();
-  }
-
-  async delayFetch() {
-    const fetchDelay = setTimeout(() => {
-      this.fetchPost();
-      return fetchDelay;
-    }, 250);
+    this.fetchPost();
   }
 
   async fetchPost() {
