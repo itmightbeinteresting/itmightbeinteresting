@@ -14,18 +14,18 @@
       <div class="container py-lg-md d-flex">
         <div class="col px-0">
           <div *ngIf="post && !loading" class="row text-center justify-content-center post-title">
-            <div class="col-xs-12">
+            <div class="col-lg-12">
               <h1 class="display-3 text-white">{{ post.data?.title }}</h1>
             </div>
-            <div *ngIf="!episodeFound" class="col-xs-12 text-center">
+            <div *ngIf="!episodeFound" class="col-lg-12 text-center">
               <h4 class="post-date">Loading...</h4>
             </div>
-            <div *ngIf="episodeFound" class="col-xs-12 text-center">
+            <div *ngIf="episodeFound" class="col-lg-12 text-center">
               <h4 class="post-date">{{ episode?.added | date }}</h4>
             </div>
           </div>
           <div *ngIf="loading" class="row text-center justify-content-center post-title">
-            <div class="col-xs-12">
+            <div class="col-lg-12">
               <h1 class="display-3 text-white">Loading...</h1>
             </div>
           </div>
@@ -38,8 +38,8 @@
       </div>
     </section>
   </div>
-  <section class="section section-lg-0 pt-lg-0 mt--200 col-xs-12">
-    <div class="post-img col-xs-12">
+  <section class="section section-lg-0 pt-lg-0 mt--200 col-lg-12">
+    <div class="post-img col-lg-12">
       <img *ngIf="post && !loading" src="{{ post.data?.featured_image }}" />
     </div>
     <div class="container">
@@ -52,7 +52,7 @@
             <strong>Unable to load content. Please refresh the page to try again.</strong>
           </ngb-alert>
         </p>
-        <div *ngIf="!loading && post.data?.tags" class="col-xs-12 text-center tag-section post-tag-section">
+        <div *ngIf="!loading && post.data?.tags" class="col-lg-12 text-center tag-section post-tag-section">
           <h5 *ngIf="!loading && post.data?.tags" class="text-center tags-title">Tags:</h5>
           <ul class="tag-list post-tag-list">
             <li *ngFor="let tag of post.data?.tags">
@@ -83,7 +83,7 @@
             </li>
           </ul>
         </div>
-        <div *ngIf="!loading && post" class="col-xs-12 post-inner" [innerHTML]="post.data?.body"></div>
+        <div *ngIf="!loading && post" class="col-lg-12 post-inner" [innerHTML]="post.data?.body"></div>
       </div>
     </div>
   </section>

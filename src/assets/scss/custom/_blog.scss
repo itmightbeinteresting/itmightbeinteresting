@@ -37,6 +37,7 @@
   display: flex;
   ul {
     display: inherit;
+    justify-content: center;
     li {
       margin-bottom: 0px;
       span {
@@ -67,6 +68,7 @@
 .post-content p {
   font-size: 1.2rem;
   font-weight: 500;
+  overflow-wrap: break-word;
 }
 
 .post-content ol li {
