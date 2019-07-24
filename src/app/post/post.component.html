@@ -18,7 +18,7 @@
               <h1 class="display-3 text-white">{{ post.data?.title }}</h1>
             </div>
             <div *ngIf="!episodeFound" class="col-lg-12 text-center">
-              <h4 class="post-date">Loading...</h4>
+              <h4 class="post-date">&nbsp;</h4>
             </div>
             <div *ngIf="episodeFound" class="col-lg-12 text-center">
               <h4 class="post-date">{{ episode?.added | date }}</h4>
