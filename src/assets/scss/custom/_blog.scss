@@ -113,6 +113,7 @@ pre.code-toolbar > .toolbar a {
 
 .post-tag-section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 

@@ -29,6 +29,7 @@ export class PostComponent implements OnInit, AfterViewChecked {
   showData: boolean;
   episodes: Episode[];
   episode: Episode;
+  episodeFound: boolean;
   postSlug: any;
   iframeUrl: any;
 
@@ -80,8 +81,10 @@ export class PostComponent implements OnInit, AfterViewChecked {
             } else {
               this.post = res.data;
               this.postSlug = this.post.data.slug;
-              this.delayDatabase();
             }
+          }).then(() => {
+            this.displayData();
+            this.fetchDatabasePost();
           })
           .catch((err) => {
             return err;
@@ -89,30 +92,23 @@ export class PostComponent implements OnInit, AfterViewChecked {
       });
   }
 
-  async delayDatabase() {
-    const dbDelay = setTimeout(() => {
-      this.fetchDatabasePost();
-      return dbDelay;
-    }, 500);
-  }
-
   async fetchDatabasePost() {
     this.postSlug = this.postSlug.toString();
     this.episodeService.getEpisode(this.postSlug).subscribe(data => {
-      if (!data) {
-        this.displayData();
-        return;
-      } else {
+      if (data) {
         this.episode = data.episode;
+        this.episodeFound = true;
         if (this.episode.embed_url === null || this.episode.embed_url === '') {
           this.options = false;
-          this.displayData();
         } else {
           this.options = true;
           this.embedURL();
         }
         this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.episode.embed_url);
         return this.episode;
+      } else {
+        this.episodeFound = false;
+        return;
       }
     });
   }

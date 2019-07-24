@@ -14,11 +14,16 @@
       <div class="container py-lg-md d-flex">
         <div class="col px-0">
           <div *ngIf="post && !loading" class="row text-center justify-content-center post-title">
-            <div class="col-lg-12">
+            <div class="col-xs-12">
               <h1 class="display-3 text-white">{{ post.data?.title }}</h1>
             </div>
-            <div *ngIf="options" class="col-lg-12 text-center">
-              <h4 class="post-date">{{ post.data?.published | date }}</h4>
+            <div *ngIf="episodeFound" class="col-xs-12 text-center">
+              <h4 class="post-date">{{ episode?.added | date }}</h4>
+            </div>
+          </div>
+          <div *ngIf="loading" class="row text-center justify-content-center post-title">
+            <div class="col-xs-12">
+              <h1 class="display-3 text-white">Loading...</h1>
             </div>
           </div>
         </div>
@@ -44,8 +49,8 @@
             <strong>Unable to load content. Please refresh the page to try again.</strong>
           </ngb-alert>
         </p>
-        <h5 *ngIf="!loading && post.data?.tags" class="text-center tags-title">Tags:</h5>
-        <div *ngIf="!loading && post.data?.tags" class="col-lg-12 text-center tag-section post-tag-section">
+        <div *ngIf="!loading && post.data?.tags" class="col-xs-12 text-center tag-section post-tag-section">
+          <h5 *ngIf="!loading && post.data?.tags" class="text-center tags-title">Tags:</h5>
           <ul class="tag-list post-tag-list">
             <li *ngFor="let tag of post.data?.tags">
               <span class="badge badge-pill badge-default card-click" (click)="selectTag(tag)">{{ tag.name }}</span>
@@ -75,7 +80,7 @@
             </li>
           </ul>
         </div>
-        <div *ngIf="!loading && post" class="col-lg-12 post-inner" [innerHTML]="post.data?.body"></div>
+        <div *ngIf="!loading && post" class="col-xs-12 post-inner" [innerHTML]="post.data?.body"></div>
       </div>
     </div>
   </section>
