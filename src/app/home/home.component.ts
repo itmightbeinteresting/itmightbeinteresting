@@ -26,14 +26,7 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.alert = false;
     this.showData = false;
-    this.delayFetch();
-  }
-
-  async delayFetch() {
-    const fetchDelay = setTimeout(() => {
-      this.fetchPosts();
-      return fetchDelay;
-    }, 750);
+    this.fetchPosts();
   }
 
   async fetchPosts() {
@@ -58,12 +51,10 @@ export class HomeComponent implements OnInit {
 
   async displayData() {
     if (this.posts) {
-      const loadDom = setTimeout(() => {
-        this.loading = false;
-        this.showData = true;
-        return loadDom;
-      }, 450);
+      this.loading = false;
+      this.showData = true;
     } else {
+      this.loading = false;
       this.alert = true;
     }
   }
