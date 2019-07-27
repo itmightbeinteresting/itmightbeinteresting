@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewChecked } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { butterService } from '../services/butterCMS.service';
 import { map, take } from 'rxjs/operators';
 import { HighlightService } from '../services/highlight.service';
@@ -24,7 +24,9 @@ export class PostComponent implements OnInit, AfterViewChecked {
   highlighted: boolean = false;
   loading: boolean;
   alert: boolean;
+  title: any;
   tag: any;
+  tags: any;
   options: any;
   showData: boolean;
   episodes: Episode[];
@@ -38,8 +40,13 @@ export class PostComponent implements OnInit, AfterViewChecked {
     private router: Router,
     private highlightService: HighlightService,
     private episodeService: EpisodeService,
-    private sanitizer: DomSanitizer
-  ) {}
+    private sanitizer: DomSanitizer,
+    private meta: Meta,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle(`${localStorage.getItem('title')} | It Might Be Interesting`);
+    this.meta.updateTag({name: 'description', content: localStorage.getItem('title')});
+  }
 
   protected slug$: Observable<string>;
   public post = {
@@ -74,6 +81,8 @@ export class PostComponent implements OnInit, AfterViewChecked {
             } else {
               this.post = res.data;
               this.postSlug = this.post.data.slug;
+              this.title = this.post.data.title;
+              this.tags = this.post.data.tags;
             }
           }).then(() => {
             this.displayData();

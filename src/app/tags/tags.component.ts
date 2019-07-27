@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { butterService } from '../services/butterCMS.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-tags',
@@ -15,8 +16,11 @@ export class TagsComponent implements OnInit {
   showData: boolean;
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Tags | It Might Be Interesting');
+  }
 
   ngOnInit() {
     this.showData = false;

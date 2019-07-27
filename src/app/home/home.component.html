@@ -54,13 +54,13 @@
                     <div class="card-body blog-card py-5">
                       <div class="col-lg-3 blog-image-block">
                         <div class="blog-list-image">
-                          <a routerLink="{{ post.slug }}">
+                          <a (click)="setTitle(post)" routerLink="{{ post.slug }}">
                             <img src="{{ post.featured_image }}" />
                           </a>
                         </div>
                       </div>
                       <div class="blog-list-content col-lg-9">
-                        <a routerLink="{{ post.slug }}">
+                        <a (click)="setTitle(post)" routerLink="{{ post.slug }}">
                           <h5 class="text-default blog-title">{{ post.title }}</h5>
                         </a>
                         <h6 class="blog-date">{{ post.published | date }}</h6>

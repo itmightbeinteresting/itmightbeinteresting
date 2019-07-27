@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewChecked } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -9,7 +10,11 @@ import { Component, OnInit, ViewEncapsulation, AfterViewChecked } from '@angular
 
 export class AboutComponent implements OnInit {
 
-  constructor() {}
+  constructor(
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('About Us | It Might Be Interesting');
+  }
 
   ngOnInit() {}
 }

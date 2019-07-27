@@ -31,14 +31,13 @@ export class LandingComponent implements OnInit {
       this.loading = false;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
   }
 
   selectTag(tag) {
     this.tag = tag.slug;
     localStorage.setItem('tag', this.tag);
-    console.log(localStorage);
     this.router.navigate(['/tag/', this.tag]);
   }
 

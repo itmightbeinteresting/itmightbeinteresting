@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { butterService } from '../services/butterCMS.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-posts-category',
@@ -17,8 +18,13 @@ export class PostsByCategoryComponent implements OnInit {
   showData: boolean;
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private titleService: Title
+  ) {
+    const categoryName = localStorage.getItem('category');
+    const categoryCapitalized = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
+    this.titleService.setTitle(`${categoryCapitalized} Episodes | It Might Be Interesting`);
+  }
 
   ngOnInit() {
     this.showData = false;

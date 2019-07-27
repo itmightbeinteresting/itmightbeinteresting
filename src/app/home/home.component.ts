@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { butterService } from '../services/butterCMS.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +16,16 @@ export class HomeComponent implements OnInit {
   loading: boolean;
   alert: any;
   posts: any;
+  post: any;
   showData: boolean;
   tag: any;
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Episodes | It Might Be Interesting');
+  }
 
   async ngOnInit() {
     this.loading = true;
@@ -57,6 +62,11 @@ export class HomeComponent implements OnInit {
       this.loading = false;
       this.alert = true;
     }
+  }
+
+  setTitle(post) {
+    this.post = post;
+    localStorage.setItem('title', this.post.title);
   }
 
   selectTag(tag) {

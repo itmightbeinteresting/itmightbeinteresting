@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { butterService } from '../services/butterCMS.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-posts-tag',
@@ -14,7 +15,13 @@ export class PostsByTagComponent implements OnInit {
   posts: any;
   showData: boolean;
 
-  constructor() { }
+  constructor(
+    private titleService: Title
+  ) {
+    const tagName = localStorage.getItem('tag');
+    const tagCapitalized = tagName.charAt(0).toUpperCase() + tagName.slice(1);
+    this.titleService.setTitle(`${tagCapitalized} Episodes | It Might Be Interesting`);
+  }
 
   ngOnInit() {
     this.showData = false;

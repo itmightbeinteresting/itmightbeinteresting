@@ -20,7 +20,6 @@ export class AddPostInfoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(sessionStorage.email);
     if (!sessionStorage.email || sessionStorage.email !== this.creds.email) {
       this.router.navigate(['/login']);
     }
@@ -36,13 +35,12 @@ export class AddPostInfoComponent implements OnInit {
       this.posts = res.data.data;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
   }
 
   selectPost(post) {
     this.selectedPost = post;
     this.websiteUrl = `https://itmightbeinteresting.com/${this.selectedPost.slug}`;
-    console.log(this.websiteUrl.toString());
   }
 }
