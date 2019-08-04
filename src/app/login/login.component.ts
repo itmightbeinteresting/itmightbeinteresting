@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       this.loginError = true;
     } else if (this.loginForm.value.email === this.creds.email || this.loginForm.value.password === this.creds.password) {
       sessionStorage.setItem('email', this.loginForm.value.email);
-      this.router.navigate(['/addpost']);
+      this.router.navigate(['/add']);
     }
   }
 }

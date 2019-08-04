@@ -25,7 +25,7 @@ import { HighlightService } from './services/highlight.service';
 import { TagsComponent } from './tags/tags.component';
 import { PostsByTagComponent } from './tags/posts-tag.component';
 import { AboutComponent } from './about/about.component';
-import { AddPostInfoComponent } from './forms/post-info.component';
+import { AddEpisodeComponent } from './forms/add-episode.component';
 
 import {
   MatAutocompleteModule,
@@ -114,7 +114,7 @@ export class MaterialModule {}
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    AddPostInfoComponent,
+    AddEpisodeComponent,
     RedirectComponent
   ],
   imports: [

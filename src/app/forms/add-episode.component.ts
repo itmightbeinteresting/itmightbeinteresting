@@ -7,21 +7,21 @@ import { EpisodeService } from '../services/post.service';
 import { ApiService } from '../api.service';
 
 @Component({
-  selector: 'app-post-info',
-  templateUrl: './post-info.component.html',
+  selector: 'app-add-episode',
+  templateUrl: './add-episode.component.html',
   styleUrls: ['../app.component.scss'],
   providers: [
     EpisodeService,
     ApiService
   ]
 })
-export class AddPostInfoComponent implements OnInit {
+export class AddEpisodeComponent implements OnInit {
   creds: any = Creds;
   posts: any;
   slug: string;
   website_url: string;
   selectedPost: any;
-  addPost: FormGroup;
+  addEpisode: FormGroup;
   dateNow: Date = new Date();
 
   constructor(
@@ -36,7 +36,7 @@ export class AddPostInfoComponent implements OnInit {
     }
     this.fetchPosts();
     this.getPosts();
-    this.addPost = this.formBuilder.group({
+    this.addEpisode = this.formBuilder.group({
       released: null,
       added: null,
       title: null,
@@ -70,22 +70,22 @@ export class AddPostInfoComponent implements OnInit {
   }
 
   submit(): void {
-    if (this.addPost.value.released === 'yes') {
-      this.addPost.value.released = true;
+    if (this.addEpisode.value.released === 'yes') {
+      this.addEpisode.value.released = true;
     } else {
-      this.addPost.value.released = false;
+      this.addEpisode.value.released = false;
     }
-    if (!this.addPost.value.itunes_url) {
-      this.addPost.value.itunes_url = null;
+    if (!this.addEpisode.value.itunes_url) {
+      this.addEpisode.value.itunes_url = null;
     }
-    if (!this.addPost.value.youtube_url) {
-      this.addPost.value.youtube_url = null;
+    if (!this.addEpisode.value.youtube_url) {
+      this.addEpisode.value.youtube_url = null;
     }
-    if (!this.addPost.value.spotify_url) {
-      this.addPost.value.spotify_url = null;
+    if (!this.addEpisode.value.spotify_url) {
+      this.addEpisode.value.spotify_url = null;
     }
-    this.addPost.value.added = this.dateNow.toISOString();
-    this.episodeService.addEpisode(this.addPost.value).subscribe(res => {
+    this.addEpisode.value.added = this.dateNow.toISOString();
+    this.episodeService.addEpisode(this.addEpisode.value).subscribe(res => {
       return res;
     });
   }

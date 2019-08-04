@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
-import { AddPostInfoComponent } from './forms/post-info.component';
+import { AddEpisodeComponent } from './forms/add-episode.component';
 import { LoginComponent } from './login/login.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { PostsByCategoryComponent } from './categories/posts-category.component';
@@ -28,8 +28,8 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'addpost',
-    component: AddPostInfoComponent
+    path: 'add',
+    component: AddEpisodeComponent
   },
   {
     path: 'categories',
