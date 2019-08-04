@@ -20,62 +20,66 @@
               </div>
             </div>
             <div class="card-body px-lg-5 py-lg-5">
-              <form role="form">
+              <form role="form" [formGroup]="addPost" (ngSubmit)="submit()">
+                <div class="form-group mb-1">
+                  <mat-form-field>
+                    <mat-label>Released</mat-label>
+                    <mat-select formControlName="released">
+                      <mat-option value="yes">Yes</mat-option>
+                      <mat-option value="no">No</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
                 <div class="form-group mb-1">
                   <mat-form-field>
                     <mat-label>Select</mat-label>
-                    <mat-select>
+                    <mat-select formControlName="title">
                       <mat-option *ngFor="let post of posts" [value]="post.title" (click)="selectPost(post)">{{post.title}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
                 <div *ngIf="!selectedPost" class="form-group mb-1">
                   <mat-form-field class="example-full-width">
-                    <input matInput #slug type="text" placeholder="Slug" required>
+                    <input matInput type="text" placeholder="Slug" required>
                   </mat-form-field>
                 </div>
                 <div *ngIf="selectedPost" class="form-group mb-1">
                   <mat-form-field class="example-full-width">
-                    <input matInput #slug type="text" [value]="selectedPost.slug" placeholder="Slug" required>
+                    <input matInput type="text" [value]="selectedPost.slug" formControlName="slug" placeholder="Slug" required>
                   </mat-form-field>
                 </div>
                 <div *ngIf="!selectedPost" class="form-group mb-1">
                   <mat-form-field class="example-full-width">
-                    <input matInput #website type="text" placeholder="Website URL" required>
+                    <input matInput type="text" placeholder="Website URL" required>
                   </mat-form-field>
                 </div>
                 <div *ngIf="selectedPost" class="form-group mb-1">
                   <mat-form-field class="example-full-width">
-                    <input matInput #website type="text" [value]="websiteUrl" placeholder="Website URL" required>
+                    <input matInput type="text" [value]="website_url" formControlName="website_url" placeholder="Website URL" required>
                   </mat-form-field>
                 </div>
                 <div class="form-group mb-1">
                   <mat-form-field class="example-full-width">
-                    <input matInput #download type="url" placeholder="Download URL" required>
+                    <input matInput type="url" formControlName="embed_url" placeholder="Embed URL" required>
                   </mat-form-field>
                 </div>
                 <div class="form-group mb-1">
                   <mat-form-field class="example-full-width">
-                    <input matInput #embed type="url" placeholder="Embed URL" required>
+                    <input matInput type="url" formControlName="itunes_url" placeholder="iTunes URL">
                   </mat-form-field>
                 </div>
                 <div class="form-group mb-1">
                   <mat-form-field class="example-full-width">
-                    <input matInput #itunes type="url" placeholder="iTunes URL">
+                    <input matInput type="url" formControlName="youtube_url" placeholder="YouTube URL">
                   </mat-form-field>
                 </div>
                 <div class="form-group mb-1">
                   <mat-form-field class="example-full-width">
-                    <input matInput #youtube type="url" placeholder="YouTube URL">
-                  </mat-form-field>
-                </div>
-                <div class="form-group mb-1">
-                  <mat-form-field class="example-full-width">
-                    <input matInput #spotify type="url" placeholder="Spotify URL">
+                    <input matInput type="url" formControlName="spotify_url" placeholder="Spotify URL">
                   </mat-form-field>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4">Submit</button>
+                  <button type="submit" value="submit" class="btn btn-primary my-4">Submit</button>
                 </div>
               </form>
             </div>

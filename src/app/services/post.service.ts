@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Episode } from '../models/episode';
 import { Observable } from 'rxjs';
@@ -21,6 +21,16 @@ export class EpisodeService {
     private http: HttpClient
   ) { }
 
+  getEpisodes(): Observable<any> {
+    const url = environment.apiUrl;
+    return this.http.get(url)
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );
+  }
+
   getEpisode(
     slug: string
   ): Observable<any> {
@@ -33,6 +43,17 @@ export class EpisodeService {
     return this.http.get(url)
       .pipe(
         map(res => {
+          return res;
+        })
+      );
+  }
+
+  addEpisode(params: HttpParams = new HttpParams()) {
+    const url = environment.apiUrl;
+    return this.http.post<any>(url, params)
+      .pipe(
+        map(res => {
+          console.log(res);
           return res;
         })
       );

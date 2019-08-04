@@ -100,7 +100,7 @@ export class PostComponent implements OnInit, AfterViewChecked {
       if (data) {
         this.episode = data.episode;
         this.episodeFound = true;
-        if (this.episode.embed_url === null || this.episode.embed_url === '') {
+        if (this.episode.released !== true) {
           this.options = false;
         } else {
           this.options = true;
