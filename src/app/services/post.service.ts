@@ -48,7 +48,9 @@ export class EpisodeService {
       );
   }
 
-  addEpisode(params: HttpParams = new HttpParams()) {
+  addEpisode(
+    params: HttpParams = new HttpParams()
+  ) {
     const url = environment.apiUrl;
     return this.http.post<any>(url, params)
       .pipe(
@@ -57,5 +59,22 @@ export class EpisodeService {
           return res;
         })
       );
+  }
+
+  updateEpisode(
+    params: HttpParams = new HttpParams(),
+    id: any
+  ) {
+    const mapObj = {
+      '{id}': id
+    };
+    const url = environment.putUrl.replace(/{id}/gi, function (matched) {
+      return mapObj[matched];
+    });
+    return this.http.put<any>(url, params)
+      .toPromise()
+      .then(res => {
+        return res;
+      });
   }
 }
