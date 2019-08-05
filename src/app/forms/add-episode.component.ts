@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Creds } from 'private/private';
 import { butterService } from '../services/butterCMS.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { EpisodeService } from '../services/post.service';
 import { ApiService } from '../api.service';
 import { MessageService } from 'primeng/api';
@@ -31,6 +31,8 @@ export class AddEpisodeComponent implements OnInit {
   addEpisode: FormGroup;
   editEpisode: FormGroup;
   dateNow: Date = new Date();
+  date = new FormControl(new Date());
+  serializedDate = new FormControl((new Date()).toISOString());
   display: boolean = false;
   tempCols: any;
   cols: any = [];
@@ -128,15 +130,13 @@ export class AddEpisodeComponent implements OnInit {
       if (!this.addEpisode.value.spotify_url) {
         this.addEpisode.value.spotify_url = null;
       }
-      this.addEpisode.value.added = this.dateNow.toISOString();
+      this.addEpisode.value.added = this.addEpisode.value.added.toISOString();
       this.episodeService.addEpisode(this.addEpisode.value).subscribe(res => {
         if (res) {
           this.addSingle();
         }
         return res;
       });
-    } else {
-      this.addApprovedError();
     }
   }
 

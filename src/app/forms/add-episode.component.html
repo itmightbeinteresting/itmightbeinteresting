@@ -32,6 +32,13 @@
                 </div>
                 <div class="form-group mb-1">
                   <mat-form-field>
+                    <input matInput [matDatepicker]="added" placeholder="Release Date" formControlName="added">
+                    <mat-datepicker-toggle matSuffix [for]="added"></mat-datepicker-toggle>
+                    <mat-datepicker #added></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="form-group mb-1">
+                  <mat-form-field>
                     <mat-label>Available</mat-label>
                     <mat-select formControlName="available" required>
                       <mat-option value="yes">Yes</mat-option>
@@ -63,7 +70,7 @@
                 </div>
                 <div class="form-group mb-1">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="url" formControlName="embed_url" placeholder="Embed URL" required>
+                    <input matInput type="url" formControlName="embed_url" placeholder="Embed URL">
                   </mat-form-field>
                 </div>
                 <div class="form-group mb-1">
