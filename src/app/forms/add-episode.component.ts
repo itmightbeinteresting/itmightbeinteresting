@@ -131,7 +131,9 @@ export class AddEpisodeComponent implements OnInit {
         this.addEpisode.value.spotify_url = null;
       }
       this.addEpisode.value.added = this.addEpisode.value.added.toISOString();
+      console.log(this.addEpisode.value);
       this.episodeService.addEpisode(this.addEpisode.value).subscribe(res => {
+        console.log(res);
         if (res) {
           this.addSingle();
         }

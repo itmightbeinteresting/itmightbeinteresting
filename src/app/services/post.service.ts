@@ -37,7 +37,7 @@ export class EpisodeService {
     const mapObj = {
       '{slug}': slug
     };
-    const url = environment.postUrl.replace(/{slug}/gi, function (matched) {
+    const url = environment.episodeUrl.replace(/{slug}/gi, function (matched) {
       return mapObj[matched];
     });
     return this.http.get(url)
