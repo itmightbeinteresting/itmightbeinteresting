@@ -4,7 +4,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonModule } from '@angular/common';
@@ -121,7 +120,6 @@ export class MaterialModule {}
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
-    HttpModule,
     HttpClientModule,
     NgbModule.forRoot(),
     FormsModule,

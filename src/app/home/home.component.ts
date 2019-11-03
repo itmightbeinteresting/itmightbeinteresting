@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   post: any;
   showData: boolean;
   tag: any;
+  additionAsyncResult: any;
 
   constructor(
     private router: Router,
@@ -32,10 +33,11 @@ export class HomeComponent implements OnInit {
     this.alert = false;
     this.showData = false;
     this.fetchPosts();
+    this.addWithAsync();
   }
 
   async fetchPosts() {
-    butterService.post.list({
+    return butterService.post.list({
       page: 1,
       page_size: 10
     })
@@ -73,5 +75,20 @@ export class HomeComponent implements OnInit {
     this.tag = tag.slug;
     localStorage.setItem('tag', this.tag);
     this.router.navigate(['/tag/', this.tag]);
+  }
+
+  async addWithAsync() {
+    const result1 = <number>await this.resolveAfter2Seconds(20);
+    const result2 = <number>await this.resolveAfter2Seconds(30);
+    this.additionAsyncResult = result1 + result2;
+    console.log(`async result: ${this.additionAsyncResult}`);
+  }
+
+  resolveAfter2Seconds(x) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(x);
+      }, 2000);
+    });
   }
 }
