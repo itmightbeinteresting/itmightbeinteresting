@@ -33,7 +33,7 @@
     "@ngx-prism/core": "^2.0.1",
     "@types/prismjs": "^1.16.0",
     "buttercms": "1.1.4",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "jw-bootstrap-switch-ng2": "2.0.5",
     "moment": "^2.24.0",
     "ng2-nouislider": "1.7.13",
